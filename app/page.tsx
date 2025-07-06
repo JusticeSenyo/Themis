@@ -480,7 +480,7 @@ export default function ThemisLawFirm() {
 
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight text-white dark:text-[#C7A349]">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight  text-[#C7A349]">
                 About Themis Solicitors & Advocates
               </h2>
               <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
@@ -493,7 +493,7 @@ export default function ThemisLawFirm() {
             <div className="grid lg:grid-cols-2 gap-16 mb-20">
               <div className="space-y-12 animate-slide-in-left">
                 <div>
-                  <h3 className="text-3xl font-serif font-bold text-foreground mb-6 text-white dark:text-[#C7A349]">Our Mission</h3>
+                  <h3 className="text-3xl font-serif font-bold mb-6  text-[#C7A349]">Our Mission</h3>
                   <p className="text-lg darkLtext-muted-foreground text-white dark:text-muted-foreground leading-relaxed font-light">
                     To provide exceptional legal services that exceed client expectations while maintaining the highest
                     standards of professional integrity, innovation, and excellence in every engagement.
@@ -501,7 +501,7 @@ export default function ThemisLawFirm() {
                 </div>
 
                 <div>
-                  <h3 className="text-3xl font-serif font-bold text-foreground mb-6 text-white dark:text-[#C7A349]">Our Vision</h3>
+                  <h3 className="text-3xl font-serif font-bold mb-6  text-[#C7A349]">Our Vision</h3>
                   <p className="text-lg dark:text-muted-foreground text-white leading-relaxed font-light">
                     To be Ghana's premier legal firm, recognized internationally for innovative solutions,
                     client-focused service, and significant contributions to legal excellence and business growth.
@@ -509,8 +509,8 @@ export default function ThemisLawFirm() {
                 </div>
               </div>
 
-              <div className="animate-slide-in-right">
-                <h3 className="text-3xl font-serif font-bold text-foreground text-white dark:text-[#C7A349]">Core Values</h3>
+              <div className="animate-slide-in-right ">
+                <h3 className="text-3xl font-serif font-bold text-[#C7A349]">Core Values</h3>
                 <div className="space-y-6">
                   {[
                     {
