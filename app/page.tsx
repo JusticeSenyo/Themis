@@ -1006,8 +1006,8 @@ export default function ThemisLawFirm() {
             <div className="grid md:grid-cols-3 gap-12 mb-12">
               <div>
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-8 h-8 border border-gold-500 flex items-center justify-center">
-                    <Scale className="h-4 w-4 text-gold-500" />
+                  <div className="flex items-center justify-center">
+                    <img src="themislogo.svg" alt="" />
                   </div>
                   <span className="font-serif font-bold text-white text-lg tracking-wider">
                     THEMIS SOLICITORS & ADVOCATES
