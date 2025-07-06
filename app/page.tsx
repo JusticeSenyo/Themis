@@ -547,7 +547,7 @@ export default function ThemisLawFirm() {
         <div className="container mx-auto px-6 content-overlay">
           <div className="max-w-6xl mx-auto text-center">
             <div className="animate-box-in decorative-lines">
-              <div className="inline-block p-8 bg-white/50 sm:bg-transparent dark:bg-slate-900/50  professional-shadow-lg mb-8 corner-lines mt-24">
+              <div className="inline-block p-8 bg-transparent sm:bg-white/50 sm:dark:bg-slate-900/50 professional-shadow-lg mb-8 corner-lines mt-24">
                 <Scale className="h-16 w-16 text-gold-500 mx-auto mb-6 floating-element" />
                 <h1 className="text-5xl md:text-7xl font-serif font-bold text-slate-900 dark:text-white mb-6 leading-tight">
                   WORLD-CLASS
