@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-
+import Logo from "@/components/logo"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -86,9 +86,10 @@ export default function ThemisLawFirm() {
       <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
         <div className="text-center space-y-6">
           <div className="relative">
-            <img src="themislogo.svg" alt="" />
+            <Logo />
             <div className="absolute inset-0 animate-ping">
-              <img src="themislogo.svg" alt="" />
+            <Logo />
+              
             </div>
           </div>
           <div className="space-y-3">
@@ -338,7 +339,7 @@ export default function ThemisLawFirm() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4 animate-slide-in-left">
               <div className="relative">
-            <img src="themislogo.svg" alt="" />
+                <Logo />
                 
               </div>
             </div>
