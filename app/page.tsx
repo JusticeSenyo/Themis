@@ -430,7 +430,7 @@ export default function ThemisLawFirm() {
         <div className="relative z-10 container mx-auto px-6 text-center">
           <div className="max-w-5xl mx-auto">
             <div className="animate-fade-in-up">
-              <h1 className="text-5xl md:text-base font-serif font-bold text-white mb-8 leading-tight tracking-tight">
+              <h1 className="text-5xl md:text-7xl sm:text-base font-serif font-bold text-white mb-8 leading-tight tracking-tight">
                 World-class legal solutions for your <span className="text-[#C7A349] italic">toughst challenges</span>
               </h1>
               <p className="text-xl md:text-md text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto font-light">
