@@ -1,9 +1,12 @@
 "use client"
+
+import React from "react"
+
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { PracticeAreaModal } from "@/components/practice-area-modal"
 import {
   Scale,
   Shield,
@@ -19,9 +22,8 @@ import {
   Globe,
   Briefcase,
   ArrowRight,
-  TrendingUp,
-  Target,
-  Zap,
+  ArrowDown,
+  Star,
 } from "lucide-react"
 
 export default function ThemisLawFirm() {
@@ -29,13 +31,23 @@ export default function ThemisLawFirm() {
   const [activeSection, setActiveSection] = useState("home")
   const [isLoading, setIsLoading] = useState(true)
   const [scrollY, setScrollY] = useState(0)
-  const [selectedPracticeArea, setSelectedPracticeArea] = useState<number | null>(null)
+  const [expandedPracticeArea, setExpandedPracticeArea] = useState<number | null>(null)
+  const [loadingProgress, setLoadingProgress] = useState(0)
 
   useEffect(() => {
-    // Loading screen
-    const timer = setTimeout(() => setIsLoading(false), 2000)
+    // Enhanced loading screen with progress
+    const progressInterval = setInterval(() => {
+      setLoadingProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(progressInterval)
+          setTimeout(() => setIsLoading(false), 500)
+          return 100
+        }
+        return prev + Math.random() * 15
+      })
+    }, 100)
 
-    // Scroll tracking
+    // Scroll tracking for parallax
     const handleScroll = () => {
       setScrollY(window.scrollY)
 
@@ -56,7 +68,7 @@ export default function ThemisLawFirm() {
 
     window.addEventListener("scroll", handleScroll)
     return () => {
-      clearTimeout(timer)
+      clearInterval(progressInterval)
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
@@ -71,22 +83,23 @@ export default function ThemisLawFirm() {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 bg-white dark:bg-slate-900 flex items-center justify-center z-50">
-        <div className="text-center space-y-8">
-          <div className="relative corner-lines">
-            <div className=" border-4 border-gold-500 bg-white dark:bg-slate-900 flex items-center justify-center">
-              <img className="w-40" src="themislogo.svg" alt="" />
+      <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
+        <div className="text-center space-y-6">
+          <div className="relative">
+            <img src="themislogo.svg" alt="" />
+            <div className="absolute inset-0 animate-ping">
+              <img src="themislogo.svg" alt="" />
             </div>
-            <div className="absolute -inset-2 border border-gold-500/30"></div>
           </div>
-          <div className="space-y-4">
-            <h1 className="text-2xl font-serif font-bold text-slate-900 dark:text-white">
-              THEMIS SOLICITORS & ADVOCATES
-            </h1>
-            <div className="w-64 h-1 bg-slate-200 dark:bg-slate-700 mx-auto">
-              <div className="h-full bg-gold-500 animate-pulse" style={{ width: "100%" }}></div>
+          <div className="space-y-3">
+            <div className="text-foreground text-xl font-serif animate-fade-in">Themis Solicitors & Advocates</div>
+            <div className="w-64 h-2 bg-muted mx-auto rounded-sm overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-[#C7A349]-500 to-[#C7A349] rounded-sm transition-all duration-300 ease-out"
+                style={{ width: `${loadingProgress}%` }}
+              />
             </div>
-            <p className="text-sm text-slate-600 dark:text-slate-400 tracking-wider">EXCELLENCE IN LEGAL PRACTICE</p>
+            <div className="text-sm text-muted-foreground animate-pulse">Loading Excellence...</div>
           </div>
         </div>
       </div>
@@ -96,404 +109,274 @@ export default function ThemisLawFirm() {
   const practiceAreas = [
     {
       title: "Banking & Securities Law",
-      description: "Comprehensive regulatory compliance and transaction structuring for financial institutions.",
+      description:
+        "Comprehensive regulatory compliance, transaction structuring, and advisory services for financial institutions and capital markets participants.",
       icon: Building,
-      stats: "50+ Transactions",
       details: {
         overview:
-          "Our Banking & Securities Law practice provides comprehensive legal services to financial institutions, investment firms, and capital markets participants across Ghana and West Africa. We combine deep regulatory knowledge with practical commercial experience to deliver solutions that meet both compliance requirements and business objectives.",
-        keyServices: [
-          "Banking license applications and regulatory compliance",
-          "Capital markets transactions and securities offerings",
-          "Investment fund formation and regulation",
-          "Payment systems and electronic banking regulation",
-          "Banking operations and corporate governance",
-          "Regulatory investigations and enforcement defense",
-          "Cross-border banking transactions",
-          "FinTech regulatory compliance and licensing",
-        ],
-        expertise: [
-          "Bank of Ghana regulatory framework",
-          "Securities and Exchange Commission compliance",
-          "Capital markets law and practice",
+          "Our Banking & Securities Law practice provides comprehensive legal services to financial institutions, investment firms, and capital markets participants across Ghana and West Africa.",
+        services: [
+          "Regulatory compliance and licensing",
+          "Capital markets transactions",
           "Banking operations and governance",
+          "Securities offerings and listings",
           "Financial services litigation",
-          "International banking regulations",
-          "Digital banking and payments",
-          "Investment advisory services",
+          "Regulatory investigations and enforcement",
         ],
         experience:
-          "With over two decades of experience in Ghana's financial sector, our team has advised on landmark transactions including the largest IPOs, bond issuances, and banking mergers in the region. We have successfully guided numerous financial institutions through complex regulatory challenges and major corporate transactions worth billions of dollars.",
-        clientTypes: [
-          "Commercial and investment banks",
-          "Insurance companies and pension funds",
-          "Investment management companies",
-          "FinTech startups and payment providers",
-          "Multinational financial institutions",
-          "Government agencies and regulators",
-          "Private equity and venture capital funds",
-          "Corporate borrowers and issuers",
-        ],
-        recentWork: [
-          "Advised on Ghana's largest banking merger worth $500M",
-          "Structured innovative sukuk bond issuance for Islamic finance",
-          "Guided major bank through digital transformation compliance",
-          "Represented international bank in regulatory investigation",
-          "Advised on first cryptocurrency exchange licensing in Ghana",
-        ],
-        whyChooseUs: [
-          "Deep regulatory expertise with Bank of Ghana and SEC",
-          "Track record on Ghana's largest financial transactions",
-          "Practical commercial approach to complex regulations",
-          "Strong relationships with key regulators and stakeholders",
-          "International experience with cross-border transactions",
-          "Cutting-edge knowledge of FinTech and digital banking",
-        ],
+          "With over two decades of experience in Ghana's financial sector, our team has advised on landmark transactions including the largest IPOs, bond issuances, and banking mergers in the region.",
+        keyClients:
+          "Leading commercial banks, investment banks, pension funds, and multinational financial institutions.",
       },
     },
     {
       title: "Insurance Law",
-      description: "Expert counsel on regulatory matters, policy disputes, and claims management.",
+      description:
+        "Expert counsel on regulatory matters, policy disputes, claims management, and insurance company operations across all lines of coverage.",
       icon: Shield,
-      stats: "200+ Cases",
       details: {
         overview:
-          "Our Insurance Law practice offers specialized expertise in all aspects of insurance law, from regulatory compliance to complex coverage disputes. We represent insurers, reinsurers, brokers, and policyholders in a wide range of insurance matters, providing strategic advice that balances legal requirements with commercial realities.",
-        keyServices: [
-          "Insurance regulatory compliance and licensing",
-          "Policy drafting, review, and interpretation",
-          "Claims handling and coverage disputes",
-          "Reinsurance arrangements and disputes",
-          "Insurance company formations and acquisitions",
-          "Regulatory investigations and enforcement actions",
-          "Insurance litigation and arbitration",
-          "Microinsurance and inclusive insurance products",
-        ],
-        expertise: [
-          "National Insurance Commission regulations",
-          "Life and non-life insurance law",
-          "Reinsurance law and practice",
-          "Insurance contract interpretation",
-          "Claims management and disputes",
-          "Insurance company governance",
-          "Microinsurance regulatory framework",
-          "International insurance standards",
+          "Our Insurance Law practice offers specialized expertise in all aspects of insurance law, from regulatory compliance to complex coverage disputes.",
+        services: [
+          "Insurance regulatory compliance",
+          "Policy drafting and review",
+          "Claims handling and disputes",
+          "Reinsurance arrangements",
+          "Insurance company formations",
+          "Regulatory investigations",
         ],
         experience:
-          "We have represented major insurance companies in high-stakes coverage disputes and have extensive experience in insurance regulatory matters before the National Insurance Commission. Our team has handled some of Ghana's most complex insurance cases, including major catastrophe claims and regulatory enforcement actions.",
-        clientTypes: [
-          "Life and non-life insurance companies",
-          "Reinsurance companies and brokers",
-          "Insurance intermediaries and agents",
-          "Corporate policyholders and risk managers",
-          "Government agencies and parastatals",
-          "International insurance groups",
-          "Microinsurance providers",
-          "Insurance technology companies",
-        ],
-        recentWork: [
-          "Defended major insurer in $50M catastrophe claim dispute",
-          "Advised on first parametric insurance product in Ghana",
-          "Represented insurer in regulatory capital adequacy proceedings",
-          "Structured innovative microinsurance distribution model",
-          "Advised on cross-border insurance merger transaction",
-        ],
-        whyChooseUs: [
-          "Extensive experience with National Insurance Commission",
-          "Deep understanding of insurance contract law",
-          "Proven track record in complex claims disputes",
-          "Expertise in emerging insurance products and technologies",
-          "Strong relationships across the insurance industry",
-          "Practical approach to regulatory compliance",
-        ],
+          "We have represented major insurance companies in high-stakes coverage disputes and have extensive experience in insurance regulatory matters before the National Insurance Commission.",
+        keyClients: "Leading insurance companies, reinsurers, insurance brokers, and corporate policyholders.",
       },
     },
     {
       title: "Intellectual Property",
-      description: "Strategic protection and enforcement of patents, trademarks, and copyrights.",
+      description:
+        "Strategic protection, enforcement, and monetization of patents, trademarks, copyrights, and trade secrets for innovative enterprises.",
       icon: Award,
-      stats: "1000+ Registrations",
       details: {
         overview:
-          "Our Intellectual Property practice helps clients protect, enforce, and monetize their intellectual property assets in Ghana and across Africa. We provide comprehensive IP services from initial strategy development through registration, enforcement, and commercialization, helping businesses build and protect valuable IP portfolios.",
-        keyServices: [
-          "Trademark registration and portfolio management",
-          "Patent prosecution and portfolio strategy",
+          "Our Intellectual Property practice helps clients protect, enforce, and monetize their intellectual property assets in Ghana and across Africa.",
+        services: [
+          "Patent prosecution and portfolio management",
+          "Trademark registration and enforcement",
           "Copyright protection and licensing",
-          "Trade secret protection and confidentiality",
-          "IP due diligence and transactions",
-          "IP enforcement and litigation",
-          "Technology transfer and licensing agreements",
-          "Brand protection and anti-counterfeiting",
-        ],
-        expertise: [
-          "Ghana Intellectual Property Office procedures",
-          "ARIPO and international IP systems",
-          "Trademark law and brand protection",
-          "Patent law and prosecution",
-          "Copyright and related rights",
-          "Trade secrets and confidential information",
-          "IP licensing and commercialization",
-          "IP enforcement and litigation",
+          "Trade secret protection",
+          "IP litigation and enforcement",
+          "Technology transfer agreements",
         ],
         experience:
-          "We have successfully registered thousands of trademarks and patents, and have extensive experience in IP enforcement actions and licensing negotiations. Our team has handled landmark IP cases in Ghana's courts and has advised on major technology transfer agreements worth hundreds of millions of dollars.",
-        clientTypes: [
-          "Multinational corporations and brands",
-          "Technology companies and startups",
-          "Pharmaceutical and biotech companies",
-          "Creative industries and entertainment companies",
-          "Manufacturing and consumer goods companies",
-          "Universities and research institutions",
-          "Government agencies and parastatals",
-          "Individual inventors and creators",
-        ],
-        recentWork: [
-          "Secured landmark trademark victory for major global brand",
-          "Advised on $100M technology licensing agreement",
-          "Successfully defended patent infringement case",
-          "Structured comprehensive IP portfolio for tech startup",
-          "Led major anti-counterfeiting enforcement campaign",
-        ],
-        whyChooseUs: [
-          "Largest IP practice in Ghana with proven track record",
-          "Deep expertise across all forms of intellectual property",
-          "Strong relationships with IP offices across Africa",
-          "Cutting-edge knowledge of technology and digital IP issues",
-          "Comprehensive enforcement capabilities",
-          "Strategic approach to IP portfolio development",
-        ],
+          "We have successfully registered thousands of trademarks and patents, and have extensive experience in IP enforcement actions and licensing negotiations.",
+        keyClients:
+          "Multinational corporations, technology companies, pharmaceutical companies, and creative industries.",
       },
     },
     {
       title: "FinTech & Technology Law",
-      description: "Cutting-edge legal solutions for digital finance and emerging technologies.",
+      description:
+        "Cutting-edge legal solutions for digital finance, blockchain, cryptocurrency, and emerging technology companies navigating regulatory landscapes.",
       icon: Globe,
-      stats: "30+ Startups",
       details: {
         overview:
-          "Our FinTech & Technology Law practice is at the forefront of legal innovation, helping technology companies navigate complex regulatory environments while enabling innovation. We provide comprehensive legal support for FinTech companies, traditional financial institutions adopting new technologies, and technology companies across various sectors.",
-        keyServices: [
-          "FinTech regulatory compliance and licensing",
-          "Cryptocurrency and blockchain legal framework",
-          "Data protection and privacy compliance (GDPR, local laws)",
-          "Technology licensing and development agreements",
-          "Digital payments and e-money regulation",
+          "Our FinTech & Technology Law practice is at the forefront of legal innovation, helping technology companies navigate complex regulatory environments.",
+        services: [
+          "FinTech regulatory compliance",
+          "Cryptocurrency and blockchain legal advice",
+          "Data protection and privacy compliance",
+          "Technology licensing and agreements",
+          "Digital payments regulation",
           "Cybersecurity and data breach response",
-          "AI and machine learning legal frameworks",
-          "Digital transformation and regulatory sandboxes",
-        ],
-        expertise: [
-          "Bank of Ghana FinTech regulatory framework",
-          "Data Protection Commission compliance",
-          "Cryptocurrency and digital assets regulation",
-          "Payment systems and e-money laws",
-          "Technology contracts and licensing",
-          "Cybersecurity and data protection",
-          "Artificial intelligence and automation",
-          "Digital transformation strategies",
         ],
         experience:
-          "We have advised leading FinTech companies on regulatory compliance, licensing, and innovative product launches in Ghana's evolving digital finance landscape. Our team has been instrumental in shaping Ghana's FinTech regulatory framework and has advised on groundbreaking digital finance initiatives.",
-        clientTypes: [
-          "FinTech startups and scale-ups",
-          "Digital payment providers and e-money issuers",
-          "Cryptocurrency exchanges and blockchain companies",
-          "Traditional banks adopting new technologies",
-          "Technology platforms and software companies",
-          "Data analytics and AI companies",
-          "Telecommunications companies",
-          "Government agencies and regulators",
-        ],
-        recentWork: [
-          "Advised on Ghana's first licensed cryptocurrency exchange",
-          "Structured regulatory sandbox application for innovative payment solution",
-          "Guided major bank through digital transformation compliance",
-          "Advised on first AI-powered lending platform in Ghana",
-          "Represented FinTech in landmark data protection case",
-        ],
-        whyChooseUs: [
-          "Leading expertise in Ghana's FinTech regulatory landscape",
-          "Deep understanding of emerging technologies and their legal implications",
-          "Strong relationships with key regulators and policymakers",
-          "Practical approach to innovation-friendly compliance",
-          "International experience with global technology companies",
-          "Cutting-edge knowledge of blockchain, AI, and digital assets",
-        ],
+          "We have advised leading FinTech companies on regulatory compliance, licensing, and innovative product launches in Ghana's evolving digital finance landscape.",
+        keyClients: "FinTech startups, digital payment providers, cryptocurrency exchanges, and technology platforms.",
       },
     },
     {
       title: "Natural Resources Law",
-      description: "Comprehensive services for oil, gas, and mining operations.",
+      description:
+        "Comprehensive legal services for oil, gas, and mining operations, including licensing, joint ventures, and environmental compliance.",
       icon: Briefcase,
-      stats: "$2B+ Deals",
       details: {
         overview:
-          "Our Natural Resources Law practice provides comprehensive legal services to companies operating in Ghana's oil, gas, and mining sectors. We combine deep sector knowledge with extensive transactional experience to help clients navigate complex regulatory frameworks while maximizing value from natural resource investments.",
-        keyServices: [
-          "Mining and petroleum licensing and permits",
-          "Joint venture agreements and partnerships",
-          "Environmental compliance and impact assessments",
-          "Local content requirements and compliance",
-          "Regulatory compliance and government relations",
-          "Project finance and investment structuring",
-          "Dispute resolution and international arbitration",
-          "Community relations and social license",
-        ],
-        expertise: [
-          "Minerals and Mining Act compliance",
-          "Petroleum (Exploration and Production) Act",
-          "Environmental Protection Agency regulations",
-          "Ghana Investment Promotion Centre requirements",
-          "Local content and local participation laws",
-          "Mining and petroleum taxation",
-          "International arbitration and dispute resolution",
-          "Community development agreements",
+          "Our Natural Resources Law practice provides comprehensive legal services to companies operating in Ghana's oil, gas, and mining sectors.",
+        services: [
+          "Mining and petroleum licensing",
+          "Joint venture agreements",
+          "Environmental compliance",
+          "Local content requirements",
+          "Regulatory compliance",
+          "Dispute resolution and arbitration",
         ],
         experience:
-          "We have extensive experience in major mining and oil & gas projects, including advising on billion-dollar investments and complex joint venture structures. Our team has been involved in some of Ghana's most significant natural resource transactions and has deep relationships across the sector.",
-        clientTypes: [
-          "International mining companies and operators",
-          "Oil & gas exploration and production companies",
-          "Mining and petroleum service providers",
-          "Equipment suppliers and contractors",
-          "Financial institutions and project lenders",
-          "Government agencies and parastatals",
-          "Local communities and traditional authorities",
-          "International development organizations",
-        ],
-        recentWork: [
-          "Advised on $2B gold mining project development",
-          "Structured complex oil & gas joint venture agreement",
-          "Represented mining company in major environmental compliance matter",
-          "Advised on innovative community development partnership",
-          "Guided petroleum company through local content compliance",
-        ],
-        whyChooseUs: [
-          "Extensive experience in Ghana's natural resources sector",
-          "Deep understanding of complex regulatory frameworks",
-          "Strong relationships with government agencies and regulators",
-          "Proven track record on major transactions and projects",
-          "Expertise in international arbitration and dispute resolution",
-          "Practical approach to community relations and social license",
-        ],
+          "We have extensive experience in major mining and oil & gas projects, including advising on billion-dollar investments and complex joint venture structures.",
+        keyClients: "International mining companies, oil & gas operators, service providers, and government entities.",
       },
     },
     {
       title: "Corporate Transactions",
-      description: "Strategic guidance on mergers, acquisitions, and complex restructuring.",
+      description:
+        "Strategic guidance on mergers, acquisitions, joint ventures, private equity transactions, and complex corporate restructuring matters.",
       icon: Users,
-      stats: "100+ M&A Deals",
       details: {
         overview:
-          "Our Corporate Transactions practice handles complex M&A transactions, private equity deals, and corporate restructuring across various industries. We provide strategic guidance throughout the transaction lifecycle, from initial structuring through closing and post-transaction integration, ensuring our clients achieve their business objectives.",
-        keyServices: [
-          "Mergers and acquisitions (domestic and cross-border)",
-          "Private equity and venture capital transactions",
+          "Our Corporate Transactions practice handles complex M&A transactions, private equity deals, and corporate restructuring across various industries.",
+        services: [
+          "Mergers and acquisitions",
+          "Private equity and venture capital",
           "Joint ventures and strategic alliances",
-          "Corporate restructuring and reorganizations",
+          "Corporate restructuring",
           "Due diligence and transaction support",
-          "Corporate governance and compliance",
-          "Capital raising and securities offerings",
-          "Management buyouts and leveraged transactions",
-        ],
-        expertise: [
-          "Companies Act and corporate law",
-          "Securities and Exchange Commission regulations",
-          "Ghana Investment Promotion Centre requirements",
-          "Competition and antitrust law",
-          "Tax structuring and optimization",
-          "Employment and labor law implications",
-          "Regulatory approvals and clearances",
-          "International transaction structures",
+          "Corporate governance advisory",
         ],
         experience:
-          "We have advised on some of Ghana's largest M&A transactions, including cross-border deals worth hundreds of millions of dollars. Our team has extensive experience across various sectors and has successfully guided clients through complex transactions in challenging market conditions.",
-        clientTypes: [
-          "Multinational corporations and conglomerates",
-          "Private equity funds and investment firms",
-          "Investment banks and financial advisors",
-          "High-growth companies and startups",
-          "Family-owned businesses and entrepreneurs",
-          "Government agencies and parastatals",
-          "Pension funds and institutional investors",
-          "Management teams and employee groups",
+          "We have advised on some of Ghana's largest M&A transactions, including cross-border deals worth hundreds of millions of dollars.",
+        keyClients: "Multinational corporations, private equity funds, investment banks, and high-growth companies.",
+      },
+    },
+    {
+      title: "Debt Recovery & Commercial Litigation",
+      description:
+        "Aggressive representation in commercial disputes, debt collection, contract enforcement, and complex multi-jurisdictional litigation.",
+      icon: Scale,
+      details: {
+        overview:
+          "Our Litigation practice provides aggressive and strategic representation in commercial disputes, debt recovery, and complex litigation matters.",
+        services: [
+          "Commercial litigation",
+          "Debt recovery and enforcement",
+          "Contract disputes",
+          "Employment litigation",
+          "Regulatory enforcement defense",
+          "International arbitration",
         ],
-        recentWork: [
-          "Advised on Ghana's largest cross-border acquisition ($800M)",
-          "Structured innovative private equity investment in healthcare",
-          "Guided major corporate restructuring and spin-off transaction",
-          "Represented buyer in strategic technology acquisition",
-          "Advised on landmark management buyout transaction",
+        experience:
+          "Our litigation team has successfully recovered millions of dollars for clients and has extensive experience in high-stakes commercial disputes before Ghana's courts.",
+        keyClients:
+          "Financial institutions, multinational corporations, government entities, and high-net-worth individuals.",
+      },
+    },
+    {
+      title: "Company Secretarial Services",
+      description:
+        "Comprehensive corporate governance support, regulatory filings, board advisory services, and compliance management for businesses.",
+      icon: Building,
+      details: {
+        overview:
+          "Our Company Secretarial Services provide comprehensive corporate governance support to ensure regulatory compliance and best practices.",
+        services: [
+          "Corporate governance advisory",
+          "Board secretarial services",
+          "Regulatory filings and compliance",
+          "Annual general meetings",
+          "Corporate record maintenance",
+          "Compliance monitoring and reporting",
         ],
-        whyChooseUs: [
-          "Proven track record on Ghana's largest and most complex transactions",
-          "Deep sector expertise across multiple industries",
-          "Strong relationships with key stakeholders and advisors",
-          "Practical commercial approach to complex legal issues",
-          "Extensive experience with international and cross-border deals",
-          "Comprehensive post-transaction support and integration advice",
-        ],
+        experience:
+          "We serve as company secretaries to numerous public and private companies, ensuring compliance with corporate governance requirements and best practices.",
+        keyClients: "Public companies, private corporations, multinational subsidiaries, and family-owned businesses.",
       },
     },
   ]
 
-  const stats = [
-    { number: "20+", label: "Years Experience", icon: TrendingUp },
-    { number: "500+", label: "Cases Won", icon: Target },
-    { number: "50+", label: "Corporate Clients", icon: Building },
-    { number: "99%", label: "Success Rate", icon: Zap },
+  const industries = [
+    "Banking & Financial Services",
+    "Mining & Natural Resources",
+    "Technology & FinTech",
+    "Oil & Gas",
+    "Marine & Shipping",
+    "Manufacturing",
+    "Agribusiness & Food",
+    "Healthcare & Pharmaceuticals",
+  ]
+
+  const teamMembers = [
+    {
+      name: "Kwame Asante",
+      title: "Managing Partner",
+      specialization: "Corporate Law & Securities",
+      experience: "20+ years",
+      education: "Harvard Law School, LLM | University of Ghana, LLB",
+    },
+    {
+      name: "Akosua Mensah",
+      title: "Senior Partner",
+      specialization: "Commercial Litigation & Arbitration",
+      experience: "15+ years",
+      education: "Oxford University, BCL | University of Cape Coast, LLB",
+    },
+    {
+      name: "Kofi Osei",
+      title: "Partner",
+      specialization: "Intellectual Property & Technology Law",
+      experience: "12+ years",
+      education: "Stanford Law School, LLM | KNUST, LLB",
+    },
+  ]
+
+  const testimonials = [
+    {
+      quote:
+        "Themis provided exceptional guidance through our complex merger. Their expertise in corporate law is unmatched in Ghana.",
+      author: "CEO, Leading Financial Institution",
+      rating: 5,
+    },
+    {
+      quote:
+        "Outstanding representation in our IP portfolio development. They understand both local and international legal landscapes.",
+      author: "CTO, Technology Startup",
+      rating: 5,
+    },
   ]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 overflow-x-hidden">
+    <div className="min-h-screen bg-background overflow-x-hidden transition-colors duration-300">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 z-40">
+      <header className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border z-40 transition-all duration-300">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center justify-center ">
-                <img className="w-32" src="themislogo.svg" alt="" />
+            <div className="flex items-center space-x-4 animate-slide-in-left">
+              <div className="relative">
+            <img src="themislogo.svg" alt="" />
+                
               </div>
-
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-8 lg:whitespace-nowrap">
               {[
-                { id: "home", label: "HOME" },
-                { id: "about", label: "ABOUT" },
-                { id: "practice-areas", label: "SERVICES" },
-                { id: "team", label: "TEAM" },
-                { id: "clients", label: "CLIENTS" },
-                { id: "contact", label: "CONTACT" },
+                { id: "home", label: "Home" },
+                { id: "about", label: "About" },
+                { id: "practice-areas", label: "Practice Areas" },
+                { id: "team", label: "Team" },
+                { id: "clients", label: "Clients" },
+                { id: "contact", label: "Contact" },
               ].map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={` rounded text-sm font-medium tracking-wider transition-all duration-300 relative ${
-                    activeSection === item.id
-                      ? "text-gold-500"
-                      : "text-slate-700 dark:text-slate-300 hover:text-gold-500"
+                  className={`text-sm font-medium transition-all duration-300 hover:text-[#C7A349] relative ${
+                    activeSection === item.id ? "text-[#C7A349]" : "text-foreground"
                   }`}
                 >
                   {item.label}
                   {activeSection === item.id && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold-500 animate-line rounded"></div>
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C7A349] rounded-sm animate-scale-in"></div>
                   )}
                 </button>
               ))}
               <ThemeToggle />
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="bg-gold-500 hover:bg-gold-600 text-white px-6 py-2 font-medium tracking-wider transition-all duration-300 rounded"
+                className="bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-slate-200 text-white dark:text-slate-900 px-6 py-2 rounded-sm font-medium transition-all duration-300 hover:scale-105"
               >
-                CONSULT NOW
+                Book Consultation
               </Button>
             </nav>
 
             {/* Mobile Menu Button */}
-            <div className="lg:hidden flex items-center space-x-2 rounded">
+            <div className="lg:hidden flex items-center space-x-2">
               <ThemeToggle />
               <button className="p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -503,29 +386,29 @@ export default function ThemisLawFirm() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <nav className="lg:hidden mt-6 pb-6 border-t border-slate-200 dark:border-slate-700">
+            <nav className="lg:hidden mt-6 pb-6 border-t border-border animate-slide-down">
               <div className="flex flex-col space-y-4 pt-6">
                 {[
-                  { id: "home", label: "HOME" },
-                  { id: "about", label: "ABOUT" },
-                  { id: "practice-areas", label: "SERVICES" },
-                  { id: "team", label: "TEAM" },
-                  { id: "clients", label: "CLIENTS" },
-                  { id: "contact", label: "CONTACT" },
+                  { id: "home", label: "Home" },
+                  { id: "about", label: "About" },
+                  { id: "practice-areas", label: "Practice Areas" },
+                  { id: "team", label: "Team" },
+                  { id: "clients", label: "Clients" },
+                  { id: "contact", label: "Contact" },
                 ].map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-left text-slate-700 dark:text-slate-300 hover:text-gold-500 font-medium tracking-wider transition-colors rounded"
+                    className="text-left text-foreground hover:text-[#C7A349] font-medium transition-colors"
                   >
                     {item.label}
                   </button>
                 ))}
                 <Button
                   onClick={() => scrollToSection("contact")}
-                  className="bg-gold-500 hover:bg-gold-600 text-white w-full mt-4 tracking-wider rounded"
+                  className="bg-slate-900 dark:bg-slate-100 hover:bg-slate-800 dark:hover:bg-slate-200 text-white dark:text-slate-900 w-full mt-4"
                 >
-                  CONSULT NOW
+                  Book Consultation
                 </Button>
               </div>
             </nav>
@@ -534,147 +417,124 @@ export default function ThemisLawFirm() {
       </header>
 
       {/* Hero Section */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center bg-overlay "
-        style={{
-          backgroundImage: `url('/giammarco-boscaro-zeH-ljawHtg-unsplash copy.jpg?height=1080&width=1920&text=Modern+Law+Office')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="container mx-auto px-6 content-overlay">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="animate-box-in decorative-lines">
-              <div className="inline-block p-8 bg-white/50 dark:bg-slate-900/50 professional-shadow-lg mb-8 corner-lines mt-24">
-                <Scale className="h-16 w-16 text-gold-500 mx-auto mb-6 floating-element" />
-                <h1 className="text-5xl md:text-7xl sm:text-base font-serif font-bold text-slate-900 dark:text-white mb-6 leading-tight">
-                  WORLD-CLASS
-                  <br />
-                  <span className="text-gold-500">LEGAL SOLUTIONS</span>
-                </h1>
-                <div className="w-24 h-1 bg-gold-500 mx-auto mb-6 animate-line"></div>
-                <p className="text-xl text-black dark:text-slate-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-                  Ghana's premier law firm delivering exceptional legal expertise across banking, corporate law,
-                  intellectual property, and natural resources.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    size="lg"
-                    className="bg-gold-500 hover:bg-gold-600 text-white px-8 py-4 text-lg font-medium tracking-wider rounded"
-                    onClick={() => scrollToSection("contact")}
-                  >
-                    GET CONSULTATION
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-white px-8 py-4 text-lg font-medium tracking-wider bg-transparent rounded"
-                    onClick={() => scrollToSection("practice-areas")}
-                  >
-                    VIEW SERVICES
-                  </Button>
-                </div>
+      <section id="home" className=" pt-32 relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`,
+          }}
+        >
+          <div className="absolute inset-0 bg-[url('/bam2.jpeg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-6 text-center">
+          <div className="max-w-5xl mx-auto">
+            <div className="animate-fade-in-up">
+              <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight tracking-tight">
+                World-class legal solutions for your <span className="text-[#C7A349] italic">toughest challenges</span>
+              </h1>
+              <p className="text-xl md:text-md text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto font-light">
+                Themis Solicitors & Advocates delivers exceptional legal expertise across banking, corporate law,
+                intellectual property, and natural resources throughout Ghana and beyond.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <Button
+                  size="lg"
+                  className="bg-[#C7A349] hover:bg-[#C7A349]-700 text-white px-10 py-4 rounded-sm text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl animate-bounce-subtle"
+                  onClick={() => scrollToSection("contact")}
+                >
+                  Get Legal Consultation
+                  <ArrowRight className="ml-3 h-5 w-5" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-10 py-4 rounded-sm text-lg font-medium bg-transparent transition-all duration-300 hover:scale-105"
+                  onClick={() => scrollToSection("practice-areas")}
+                >
+                  Explore Our Services
+                </Button>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Stats Section */}
-      <section
-        className="py-20 bg-overlay-light vertical-lines"
-        style={{
-          backgroundImage: `url('/placeholdr.svg?height=600&width=1920&text=Professional+Office+Interior')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 content-overlay">
-          <div className="grid md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="text-center p-8 bg-white/95 dark:bg-slate-800/95 professional-shadow animate-slide-up corner-lines"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <stat.icon className="h-12 w-12 text-gold-500 mx-auto mb-4" />
-                <div className="text-4xl font-bold text-slate-900 dark:text-white mb-2">{stat.number}</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 tracking-wider font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2  animate-bounce">
+          
+        <ArrowDown className="mx-auto h-6 w-6 text-gray animate-bounce" />
         </div>
       </section>
 
       {/* About Section */}
-      <section
-        id="about"
-        className="py-24 bg-overlay-light diagonal-lines"
-        style={{
-          backgroundImage: `url('/kyrylo-kholopkin-b0Nk_6HvEUo-unsplash.jpg?height=800&width=1920&text=Law+Library+Books')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 content-overlay">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 decorative-lines">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#c7a349] dark:text-white mb-6">
-                ABOUT THEMIS
+      <section id="about" className="py-24 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight">
+                About Themis Solicitors & Advocates
               </h2>
-              <div className="w-24 h-1 bg-gold-500 mx-auto mb-8 animate-line"></div>
-              <p className="text-xl text-white dark:text-slate-400 max-w-3xl mx-auto">
-                Distinguished full-service legal firm committed to delivering world-class solutions with unwavering
-                dedication to excellence.
+              <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+                We are a distinguished full-service legal firm committed to delivering world-class legal solutions with
+                unwavering dedication to our core values and client success.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-16">
-              <div className="space-y-8">
-                <div className="p-8 bg-white/95 dark:bg-slate-900/95 professional-shadow corner-lines">
-                  <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">OUR MISSION</h3>
-                  <div className="w-12 h-1 bg-gold-500 mb-4 animate-line"></div>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+            <div className="grid lg:grid-cols-2 gap-16 mb-20">
+              <div className="space-y-12 animate-slide-in-left">
+                <div>
+                  <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Our Mission</h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed font-light">
                     To provide exceptional legal services that exceed client expectations while maintaining the highest
-                    standards of professional integrity and innovation.
+                    standards of professional integrity, innovation, and excellence in every engagement.
                   </p>
                 </div>
 
-                <div className="p-8 bg-white/95 dark:bg-slate-900/95 professional-shadow corner-lines">
-                  <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">OUR VISION</h3>
-                  <div className="w-12 h-1 bg-gold-500 mb-4 animate-line"></div>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                    To be Ghana's premier legal firm, recognized internationally for innovative solutions and
-                    client-focused service.
+                <div>
+                  <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Our Vision</h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed font-light">
+                    To be Ghana's premier legal firm, recognized internationally for innovative solutions,
+                    client-focused service, and significant contributions to legal excellence and business growth.
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <h3 className="text-2xl font-serif font-bold text-[#c7a349] dark:text-white mb-8">CORE VALUES</h3>
-                {[
-                  { title: "RESPECT", desc: "Honor clients, colleagues, and the legal profession" },
-                  { title: "EXCELLENCE", desc: "Highest quality and innovation in everything we do" },
-                  { title: "INTEGRITY", desc: "Unwavering ethical standards and transparency" },
-                  { title: "RESULTS", desc: "Measurable outcomes that create lasting value" },
-                ].map((value, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start space-x-4 p-6 bg-white/95 dark:bg-slate-900/95 professional-shadow animate-stagger corner-lines"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="w-4 h-4 bg-gold-500 mt-1 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-bold text-slate-900 dark:text-white mb-2 tracking-wider">{value.title}</h4>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm">{value.desc}</p>
+              <div className="animate-slide-in-right">
+                <h3 className="text-3xl font-serif font-bold text-foreground mb-">Core Values</h3>
+                <div className="space-y-6">
+                  {[
+                    {
+                      title: "Respect",
+                      description:
+                        "We honor our clients, colleagues, and the legal profession with dignity and professionalism",
+                    },
+                    {
+                      title: "Excellence",
+                      description: "We strive for the highest quality and innovation in everything we do",
+                    },
+                    {
+                      title: "Integrity",
+                      description: "We maintain unwavering ethical standards and transparency in all our dealings",
+                    },
+                    {
+                      title: "Results",
+                      description: "We deliver measurable outcomes that create lasting value for our clients",
+                    },
+                  ].map((value, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start space-x-4 p-6 bg-card rounded-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in-up"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="w-3 h-3 bg-[#C7A349] rounded-sm mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="font-bold text-foreground text-lg mb-2">{value.title}</h4>
+                        <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -682,224 +542,394 @@ export default function ThemisLawFirm() {
       </section>
 
       {/* Practice Areas Section */}
-      <section
-        id="practice-areas"
-        className="py-24 bg-white-20 "
-        style={{
-          backgroundImage: `url('/team.webp?height=800&width=1920&text=Modern+Conference+Room')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 content-overlay">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 decorative-lines">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-black mb-6">
-                PRACTICE AREAS
+      <section id="practice-areas" className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight">
+                Areas of Practice
               </h2>
-              <div className="w-24 h-1 bg-gold-500 mx-auto mb-8 animate-line"></div>
-              <p className="text-xl text-black dark:text-black max-w-3xl mx-auto">
-                Comprehensive legal services across multiple practice areas, delivering strategic solutions for complex
-                challenges.
+              <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+                Comprehensive legal services across multiple practice areas, delivering strategic solutions tailored to
+                meet all your business and personal legal requirements.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {practiceAreas.map((area, index) => (
-                <div
+                <Card
                   key={index}
-                  className="group bg-white/95 dark:bg-slate-800/95 p-8 professional-shadow hover:professional-shadow-lg transition-all duration-300 animate-box-in corner-lines"
+                  className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg animate-fade-in-up"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <area.icon className="h-12 w-12 text-gold-500" />
-                    <Badge variant="secondary" className="bg-gold-500/10 text-gold-500 border-gold-500/20">
-                      {area.stats}
-                    </Badge>
-                  </div>
-                  <h3 className="text-xl font-serif font-bold text-slate-900 dark:text-white mb-4">{area.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">{area.description}</p>
-                  <button
-                    onClick={() => setSelectedPracticeArea(index)}
-                    className="flex items-center text-gold-500 font-medium text-sm tracking-wider group-hover:translate-x-2 transition-all duration-300 rounded"
-                  >
-                    LEARN MORE
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </button>
-                </div>
+                  <CardContent className="p-8">
+                    <div className="mb-6">
+                      <area.icon className="h-14 w-14 text-[#C7A349] group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <h3 className="text-xl font-serif font-bold text-foreground mb-4 leading-tight">{area.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed font-light mb-4">{area.description}</p>
+                    <button
+                      onClick={() => setExpandedPracticeArea(expandedPracticeArea === index ? null : index)}
+                      className="flex items-center text-[#C7A349] font-medium group-hover:translate-x-2 transition-all duration-300 hover:text-[#C7A349]-700"
+                    >
+                      <span className="text-sm">Learn More</span>
+                      <ChevronRight className="ml-2 h-4 w-4" />
+                    </button>
+                  </CardContent>
+                </Card>
               ))}
             </div>
+
+            {/* Expanded Practice Area Details */}
+            {expandedPracticeArea !== null && (
+              <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+                <div className="bg-card rounded-sm shadow-md max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+                  <div className="p-8">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center space-x-4">
+                        {React.createElement(practiceAreas[expandedPracticeArea].icon, {
+                          className: "h-12 w-12 text-[#C7A349]",
+                        })}
+                        <h3 className="text-3xl font-serif font-bold text-foreground">
+                          {practiceAreas[expandedPracticeArea].title}
+                        </h3>
+                      </div>
+                      <button
+                        onClick={() => setExpandedPracticeArea(null)}
+                        className="p-2 hover:bg-muted rounded-sm transition-colors"
+                      >
+                        <X className="h-6 w-6 text-muted-foreground" />
+                      </button>
+                    </div>
+
+                    <div className="space-y-8">
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Overview</h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {practiceAreas[expandedPracticeArea].details.overview}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Our Services</h4>
+                        <div className="grid md:grid-cols-2 gap-3">
+                          {practiceAreas[expandedPracticeArea].details.services.map((service, idx) => (
+                            <div key={idx} className="flex items-center space-x-3">
+                              <div className="w-2 h-2 bg-[#C7A349] rounded-sm flex-shrink-0"></div>
+                              <span className="text-muted-foreground">{service}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Experience & Expertise</h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {practiceAreas[expandedPracticeArea].details.experience}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-4">Key Clients</h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {practiceAreas[expandedPracticeArea].details.keyClients}
+                        </p>
+                      </div>
+
+                      <div className="pt-6 border-t border-border">
+                        <Button
+                          onClick={() => {
+                            setExpandedPracticeArea(null)
+                            scrollToSection("contact")
+                          }}
+                          className="bg-[#C7A349] hover:bg-[#C7A349]-700 text-white px-8 py-3 rounded-sm font-medium transition-all duration-300 hover:scale-105"
+                        >
+                          Discuss Your Needs
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section
-        id="team"
-        className="py-24 bg-overlay-light vertical-lines"
-        style={{
-          backgroundImage: `url('/inaki-del-olmo-NIJuEQw0RK-unsplash.jpg?height=800&width=1920&text=Professional+Team+Meeting')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 content-overlay">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 decorative-lines">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-6">
-                OUR EXPERTISE
+      {/* <section id="team" className="py-24 bg-muted/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight">
+                Our Distinguished Team
               </h2>
-              <div className="w-24 h-1 bg-gold-500 mx-auto mb-8 animate-line"></div>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-                Experienced legal professionals with deep industry knowledge and proven track record.
+              <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-full animate-scale-in"></div>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+                Meet our accomplished legal professionals who bring decades of combined experience and expertise to
+                serve your legal needs.
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <div className="p-8 bg-white/95 dark:bg-slate-900/95 professional-shadow corner-lines">
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-12 h-12 bg-gold-500 flex items-center justify-center">
-                      <Award className="h-6 w-6 text-white" />
+            <div className="grid md:grid-cols-3 gap-10">
+              {teamMembers.map((member, index) => (
+                <Card
+                  key={index}
+                  className="group hover:shadow-xl transition-all duration-500 border-0 shadow-lg overflow-hidden animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <CardContent className="p-0">
+                    <div className="relative h-80 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+                      <div className="absolute inset-0 bg-[url('/placeholder.svg?height=400&width=300')] bg-cover bg-center opacity-20"></div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Users className="h-24 w-24 text-slate-400" />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white">
-                        PROVEN EXPERIENCE
-                      </h3>
-                      <div className="w-16 h-0.5 bg-gold-500 mt-2 animate-line"></div>
+                    <div className="p-8">
+                      <h4 className="font-serif font-bold text-foreground text-xl mb-2">{member.name}</h4>
+                      <p className="text-[#C7A349] font-semibold mb-3">{member.title}</p>
+                      <p className="text-muted-foreground mb-4 font-light">{member.specialization}</p>
+                      <div className="space-y-2 text-sm text-muted-foreground">
+                        <p>
+                          <span className="font-medium">Experience:</span> {member.experience}
+                        </p>
+                        <p>
+                          <span className="font-medium">Education:</span> {member.education}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                    Our lawyers have over{" "}
-                    <span className="font-bold text-gold-500">20 years of combined legal experience</span> and more than{" "}
-                    <span className="font-bold text-gold-500">30 years of general work experience</span>, providing
-                    integrated representation across all legal matters.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { icon: Building, name: "BANKING" },
-                    { icon: Briefcase, name: "CONSTRUCTION" },
-                    { icon: Globe, name: "OIL & GAS" },
-                    { icon: Users, name: "HR SERVICES" },
-                    { icon: Award, name: "TECHNOLOGY" },
-                    { icon: Scale, name: "MINING" },
-                  ].map((industry, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 p-4 bg-white/95 dark:bg-slate-900/95 professional-shadow corner-lines"
-                    >
-                      <industry.icon className="h-5 w-5 text-gold-500" />
-                      <span className="text-slate-900 dark:text-white font-medium text-sm tracking-wider">
-                        {industry.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="relative decorative-lines">
-                <div className="w-full h-96 bg-gradient-to-br from-slate-200/95 to-slate-300/95 dark:from-slate-700/95 dark:to-slate-600/95 flex items-center justify-center professional-shadow-lg corner-lines">
-                  <div className="text-center">
-                    <Scale className="h-24 w-24 text-gold-500 mx-auto mb-4 floating-element" />
-                    <div className="text-2xl font-serif font-bold text-slate-700 dark:text-slate-300">
-                      EXCELLENCE IN
-                      <br />
-                      LEGAL PRACTICE
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute -bottom-4 -right-4 w-full h-full border-2 border-gold-500/30 -z-10"></div>
-              </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+            <section id="team" className="py-24 bg-muted/30">
+              <div className="container mx-auto px-6">
+                <div className="max-w-7xl mx-auto">
+                  <div className="text-center mb-20 animate-fade-in-up">
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight">
+                      Our Legal Team
+                    </h2>
+                    <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
+                    <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+                      Experienced legal professionals dedicated to delivering exceptional results across diverse industries
+                      and practice areas.
+                    </p>
+                  </div>
+      
+                  <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="animate-slide-in-left">
+                      <div className="relative h-96 bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 rounded-sm overflow-hidden shadow-xl">
+                        <div className="absolute inset-0 bg-[url('/team.webp?height=400&width')] bg-cover bg-center opacity-20"></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center">
+                            <img src="themislogo.svg" alt="" />
+                            {/* <Scale className="h-24 w-24 text-[#C7A349] mx-auto mb-4" /> */}
+                            <div className="text-md font-serif font-bold text-slate-700 dark:text-slate-300">
+                              Excellence in Legal Practice
+                            </div>
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent"></div>
+                      </div>
+                    </div>
+      
+                    <div className="animate-slide-in-right space-y-8">
+                      <div>
+                        <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Proven Experience & Expertise</h3>
+                        <p className="text-lg text-muted-foreground leading-relaxed font-light mb-8">
+                          Our lawyers have over{" "}
+                          <span className="font-semibold text-[#C7A349]">20 years of combined legal experience</span> and more
+                          than <span className="font-semibold text-[#C7A349]">30 years of general work experience</span>,
+                          which gives us the capacity to provide you with integrated representation in any legal matter.
+                        </p>
+                      </div>
+      
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground mb-6">Industry Experience</h4>
+                        <p className="text-muted-foreground leading-relaxed mb-6">
+                          Our lawyers have worked extensively with clients across diverse sectors, bringing deep industry
+                          knowledge and practical insights to every engagement.
+                        </p>
+      
+                        <div className="grid grid-cols-2 gap-4">
+                          {[
+                            { icon: Building, name: "Banking" },
+                            { icon: Briefcase, name: "Construction" },
+                            { icon: Globe, name: "Oil & Gas" },
+                            { icon: Users, name: "Human Resources" },
+                            { icon: Award, name: "Technology" },
+                            { icon: Scale, name: "Mining" },
+                          ].map((industry, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center space-x-3 p-4 bg-card rounded-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in-up"
+                              style={{ animationDelay: `${index * 0.1}s` }}
+                            >
+                              <industry.icon className="h-6 w-6 text-[#C7A349] flex-shrink-0" />
+                              <span className="text-foreground font-medium">{industry.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+      
+                      <div className="pt-6">
+                        <div className="bg-[#C7A349]-50 dark:bg-[#C7A349]-950/20 border border-[#C7A349]-200 dark:border-[#C7A349]-800/30 rounded-sm p-6">
+                          <h4 className="font-semibold text-[#C7A349]-800 dark:text-[#C7A349]-400 mb-3 flex items-center">
+                            <Award className="h-5 w-5 mr-2" />
+                            Integrated Legal Representation
+                          </h4>
+                          <p className="text-sm text-[#C7A349]-700 dark:text-[#C7A349]-300 leading-relaxed">
+                            Our diverse experience across industries and practice areas enables us to provide comprehensive,
+                            integrated legal solutions that address all aspects of your business and personal legal needs.
+                          </p>
+                        </div>
+                      </div>
+      
+                      <div className="pt-4">
+                        <Button
+                          onClick={() => scrollToSection("contact")}
+                          className="bg-[#C7A349] hover:bg-[#C7A349]-700 text-white px-8 py-3 rounded-sm font-medium transition-all duration-300 hover:scale-105"
+                        >
+                          Meet Our Team
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+      
+                  {/* Additional Stats Section */}
+                  <div className="mt-20 grid md:grid-cols-3 gap-8">
+                    <Card className="text-center p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up">
+                      <CardContent className="p-0">
+                        <div className="text-4xl font-bold text-[#C7A349] mb-2">20+</div>
+                        <div className="text-lg font-semibold text-foreground mb-2">Years Combined</div>
+                        <div className="text-sm text-muted-foreground">Legal Experience</div>
+                      </CardContent>
+                    </Card>
+      
+                    <Card
+                      className="text-center p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up"
+                      style={{ animationDelay: "0.1s" }}
+                    >
+                      <CardContent className="p-0">
+                        <div className="text-4xl font-bold text-[#C7A349] mb-2">30+</div>
+                        <div className="text-lg font-semibold text-foreground mb-2">Years Total</div>
+                        <div className="text-sm text-muted-foreground">Work Experience</div>
+                      </CardContent>
+                    </Card>
+      
+                    <Card
+                      className="text-center p-8 border-0 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up"
+                      style={{ animationDelay: "0.2s" }}
+                    >
+                      <CardContent className="p-0">
+                        <div className="text-4xl font-bold text-[#C7A349] mb-2">6+</div>
+                        <div className="text-lg font-semibold text-foreground mb-2">Industries</div>
+                        <div className="text-sm text-muted-foreground">Served</div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-      {/* Clients Section */}
-      <section
-        id="clients"
-        className="py-24 bg-overlay-light diagonal-lines"
-        style={{
-          backgroundImage: `url('/clarisse-meyer-jKU2NneZAbI-unsplash copy.jpg?height=800&width=1920&text=Corporate+Handshake')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 content-overlay">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 decorative-lines">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#c7a349] dark:text-white mb-6">
-                INDUSTRIES WE SERVE
+      {/* Clients & Industries Section */}
+      <section id="clients" className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight">
+                Clients & Industries
               </h2>
-              <div className="w-24 h-1 bg-gold-500 mx-auto mb-8 animate-line"></div>
-              <p className="text-xl text-white dark:text-slate-400 max-w-3xl mx-auto">
-                Specialized legal expertise across diverse sectors with deep understanding of industry challenges.
+              <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+                We serve diverse industries with specialized legal expertise tailored to each sector's unique
+                challenges, opportunities, and regulatory requirements.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-              {[
-                "Banking & Financial Services",
-                "Mining & Natural Resources",
-                "Technology & FinTech",
-                "Oil & Gas",
-                "Marine & Shipping",
-                "Manufacturing",
-                "Agribusiness & Food",
-                "Healthcare & Pharmaceuticals",
-              ].map((industry, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+              {industries.map((industry, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-white/95 dark:bg-slate-800/95 text-center professional-shadow hover:professional-shadow-lg transition-all duration-300 corner-lines"
+                  className="text-center group animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <div className="text-sm font-medium text-slate-900 dark:text-white tracking-wider">{industry}</div>
+                  <Badge
+                    variant="secondary"
+                    className="text-sm py-3 px-6 bg-muted hover:bg-[#C7A349]-50 dark:hover:bg-[#C7A349]-950 border border-border hover:border-[#C7A349]-200 dark:hover:border-[#C7A349]-800 transition-all duration-300 group-hover:scale-105 font-medium"
+                  >
+                    {industry}
+                  </Badge>
                 </div>
               ))}
             </div>
 
-            <div className="text-center p-12 bg-gold-500/10 border border-gold-500/20 corner-lines">
-              <blockquote className="text-2xl md:text-3xl font-serif italic text-slate-300 dark:text-slate-300 mb-6">
-                "Excellence in legal service is not just our goal—it's our standard."
+            {/* Testimonials */}
+            <div className="grid md:grid-cols-2 gap-12">
+              {testimonials.map((testimonial, index) => (
+                <Card
+                  key={index}
+                  className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <CardContent className="p-8">
+                    <div className="flex mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 text-[#C7A349]-400 fill-current" />
+                      ))}
+                    </div>
+                    <blockquote className="text-lg text-muted-foreground mb-6 leading-relaxed font-light italic">
+                      "{testimonial.quote}"
+                    </blockquote>
+                    <p className="text-foreground font-medium">— {testimonial.author}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="mt-20 text-center animate-fade-in-up">
+              <blockquote className="text-md md:text-3xl font-serif italic text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+                "Excellence in legal service is not just our goal—it's our standard. We measure our success by the
+                transformative impact we create for our clients."
               </blockquote>
-              <p className="text-gold-500 font-medium tracking-wider">— THEMIS SOLICITORS & ADVOCATES</p>
+              <p className="text-muted-foreground mt-6 font-medium">— Themis Solicitors & Advocates</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="py-24 bg-overlay text-white"
-        style={{
-          backgroundImage: `url('/tingey-injury-law-firm-nSpj-Z12lX0-unsplash.jpg?height=800&width=1920&text=Modern+City+Skyline')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 content-overlay">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 decorative-lines">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">CONTACT US</h2>
-              <div className="w-24 h-1 bg-gold-500 mx-auto mb-8 animate-line"></div>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Ready to discuss your legal needs? Connect with our experienced team for professional consultation.
+      <section id="contact" className="py-24 bg-slate-900 dark:bg-slate-950 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1200')] bg-cover bg-center opacity-5"></div>
+        <div className="relative z-10 container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight">Contact Us</h2>
+              <div className="w-24 h-1 bg-[#C7A349]-400 mx-auto mb-8 rounded-sm animate-scale-in"></div>
+              <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed font-light">
+                Ready to discuss your legal needs? Connect with our experienced team today for a consultation tailored
+                to your specific requirements.
               </p>
             </div>
 
             <div className="grid lg:grid-cols-2 gap-16">
-              <div className="space-y-8 vertical-lines">
-                <h3 className="text-3xl font-serif font-bold mb-8">GET IN TOUCH</h3>
-                <div className="space-y-6">
+              <div className="animate-slide-in-left">
+                <h3 className="text-3xl font-serif font-bold mb-10">Get In Touch</h3>
+                <div className="space-y-8">
                   <div className="flex items-start space-x-6">
-                    <div className="w-12 h-12 bg-gold-500 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#C7A349] rounded-sm flex items-center justify-center flex-shrink-0">
                       <MapPin className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2 tracking-wider">OFFICE ADDRESS</h4>
-                      <p className="text-slate-300">
+                      <h4 className="font-semibold text-lg mb-2">Office Address</h4>
+                      <p className="text-slate-300 leading-relaxed">
                         No. DH20 Biakpa Close
                         <br />
                         North Kaneshie, Accra
@@ -910,82 +940,122 @@ export default function ThemisLawFirm() {
                   </div>
 
                   <div className="flex items-start space-x-6">
-                    <div className="w-12 h-12 bg-gold-500 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#C7A349] rounded-sm flex items-center justify-center flex-shrink-0">
                       <Phone className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2 tracking-wider">PHONE</h4>
+                      <h4 className="font-semibold text-lg mb-2">Phone</h4>
                       <p className="text-slate-300">+233 55 340 9100</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-6">
-                    <div className="w-12 h-12 bg-gold-500 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#C7A349] rounded-sm flex items-center justify-center flex-shrink-0">
                       <Mail className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2 tracking-wider">EMAIL</h4>
+                      <h4 className="font-semibold text-lg mb-2">Email</h4>
                       <p className="text-slate-300">info@themispruc.com</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-12 p-6 bg-[#C7A349]/10 border border-[#C7A349]/20 rounded-sm backdrop-blur-sm">
+                  <div className="flex items-start space-x-4">
+                    <Shield className="h-6 w-6 text-[#C7A349]-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-[#C7A349]-400 mb-3">Security Notice</h4>
+                      <p className="text-sm text-slate-300 leading-relaxed">
+                        To protect against fraud, please verify that all communications originate from our official
+                        email domain: @themispruc.com. We will never request sensitive information through unofficial
+                        channels or unsecured communications.
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white/40 text-slate-900 dark:text-white dark:bg-slate-900/50 p-8 professional-shadow-lg corner-lines">
-                <h3 className="text-2xl font-serif font-bold mb-6">SCHEDULE CONSULTATION</h3>
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-bold mb-2 tracking-wider">FIRST NAME</label>
-                      <input
-                        type="text"
-                        className="w-full p-4 border border-slate-300 focus:border-gold-500 focus:outline-none transition-colors rounded"
-                        placeholder="Your first name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-bold mb-2 tracking-wider">LAST NAME</label>
-                      <input
-                        type="text"
-                        className="w-full p-4 border border-slate-300 focus:border-gold-500 focus:outline-none transition-colors rounded"
-                        placeholder="Your last name"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold mb-2 tracking-wider">EMAIL ADDRESS</label>
-                    <input
-                      type="email"
-                      className="w-full p-4 border border-slate-300 focus:border-gold-500 focus:outline-none transition-colors rounded"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold mb-2 tracking-wider">LEGAL MATTER</label>
-                    <select className="w-full p-4 border border-slate-300 focus:border-gold-500 focus:outline-none transition-colors rounded">
-                      <option>Select practice area</option>
-                      <option>Banking & Securities Law</option>
-                      <option>Insurance Law</option>
-                      <option>Intellectual Property</option>
-                      <option>FinTech & Technology Law</option>
-                      <option>Natural Resources Law</option>
-                      <option>Corporate Transactions</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold mb-2 tracking-wider">MESSAGE</label>
-                    <textarea
-                      rows={4}
-                      className="w-full p-4 border border-slate-300 focus:border-gold-500 focus:outline-none transition-colors rounded"
-                      placeholder="Describe your legal needs..."
-                    ></textarea>
-                  </div>
-                  <Button className="w-full bg-gold-500 hover:bg-gold-600 text-white py-4 text-lg font-bold tracking-wider rounded">
-                    SEND MESSAGE
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </form>
+              <div className="animate-slide-in-right">
+                <Card className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-md">
+                  <CardContent className="p-8">
+                    <h3 className="text-md font-serif font-bold mb-6">Schedule a Consultation</h3>
+                    <form className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-semibold mb-3 text-slate-700 dark:text-slate-300">
+                            First Name
+                          </label>
+                          <input
+                            type="text"
+                            className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
+                            placeholder="Your first name"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-semibold mb-3 text-slate-700 dark:text-slate-300">
+                            Last Name
+                          </label>
+                          <input
+                            type="text"
+                            className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
+                            placeholder="Your last name"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold mb-3 text-slate-700 dark:text-slate-300">
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
+                          placeholder="your.email@example.com"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold mb-3 text-slate-700 dark:text-slate-300">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
+                          placeholder="+233 XX XXX XXXX"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold mb-3 text-slate-700 dark:text-slate-300">
+                          Legal Matter
+                        </label>
+                        <select className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white">
+                          <option>Select practice area</option>
+                          <option>Banking & Securities Law</option>
+                          <option>Insurance Law</option>
+                          <option>Intellectual Property</option>
+                          <option>FinTech & Technology Law</option>
+                          <option>Natural Resources Law</option>
+                          <option>Corporate Transactions</option>
+                          <option>Commercial Litigation</option>
+                          <option>Company Secretarial Services</option>
+                          <option>Other</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-semibold mb-3 text-slate-700 dark:text-slate-300">
+                          Message
+                        </label>
+                        <textarea
+                          rows={4}
+                          className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
+                          placeholder="Please describe your legal needs and how we can assist you..."
+                        ></textarea>
+                      </div>
+                      <Button className="w-full bg-[#C7A349] hover:bg-[#C7A349]-700 text-white py-4 text-lg font-semibold rounded-sm transition-all duration-300 hover:scale-105">
+                        Send Message
+                        <ArrowRight className="ml-3 h-5 w-5" />
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
@@ -993,37 +1063,25 @@ export default function ThemisLawFirm() {
       </section>
 
       {/* Footer */}
-      <footer
-        className=" text-slate-400 py-12"
-        style={{
-          backgroundImage: `url('/placeholer.svg?height=400&width=1920&text=Night+City+View')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 content-overlay">
-          <div className="max-w-6xl mx-auto">
+      <footer className="bg-slate-950 dark:bg-black text-slate-400 py-12">
+        <div className="container mx-auto px-6">
+          <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-3 gap-12 mb-12">
               <div>
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className="flex items-center justify-center">
-                    <img src="themislogo.svg" alt="" />
-                  </div>
-                  <span className="font-serif font-bold text-white text-lg tracking-wider">
-                    THEMIS SOLICITORS & ADVOCATES
-                  </span>
+                 <img src="themislogo.svg" alt="" />
                 </div>
-                <p className="text-slate-400 text-sm">
+                <p className="text-slate-400 leading-relaxed font-light">
                   Delivering world-class legal solutions with excellence, integrity, and unwavering commitment to client
                   success.
                 </p>
               </div>
 
               <div>
-                <h4 className="font-bold text-black dark:text-white mb-4 tracking-wider">QUICK LINKS</h4>
+                <h4 className="font-semibold text-white mb-4">Quick Links</h4>
                 <div className="space-y-2">
                   {["About Us", "Practice Areas", "Our Team", "Contact"].map((link) => (
-                    <button key={link} className="block text-slate-400 hover:text-gold-500 transition-colors text-sm rounded">
+                    <button key={link} className="block text-slate-400 hover:text-[#C7A349]-400 transition-colors">
                       {link}
                     </button>
                   ))}
@@ -1031,40 +1089,29 @@ export default function ThemisLawFirm() {
               </div>
 
               <div>
-                <h4 className="font-bold text-black dark:text-white mb-4 tracking-wider">LEGAL NOTICE</h4>
-                <p className="text-xs text-slate-400">
-                  Licensed to practice law in Ghana. Regulated by the Ghana Bar Association. Prior results do not
-                  guarantee a similar outcome.
+                <h4 className="font-semibold text-white mb-4">Legal Notice</h4>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Licensed to practice law in Ghana. Regulated by the Ghana Bar Association. Attorney advertising. Prior
+                  results do not guarantee a similar outcome.
                 </p>
               </div>
             </div>
 
             <div className="border-t border-slate-800 pt-8">
               <div className="flex flex-col md:flex-row justify-between items-center">
-                <p className="text-xs text-slate-500 mb-4 md:mb-0">
-                  © 2024 THEMIS SOLICITORS & ADVOCATES. ALL RIGHTS RESERVED.
+                <p className="text-sm text-slate-500 mb-4 md:mb-0">
+                  © 2024 Themis Solicitors & Advocates. All rights reserved.
                 </p>
-                <div className="flex space-x-6 text-xs text-slate-500">
-                  <button className="hover:text-gold-500 transition-colors rounded">PRIVACY POLICY</button>
-                  <button className="hover:text-gold-500 transition-colors rounded">TERMS OF SERVICE</button>
-                  <button className="hover:text-gold-500 transition-colors rounded">LEGAL DISCLAIMER</button>
+                <div className="flex space-x-6 text-sm text-slate-500">
+                  <button className="hover:text-[#C7A349]-400 transition-colors">Privacy Policy</button>
+                  <button className="hover:text-[#C7A349]-400 transition-colors">Terms of Service</button>
+                  <button className="hover:text-[#C7A349]-400 transition-colors">Legal Disclaimer</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </footer>
-
-      {/* Practice Area Modal */}
-      <PracticeAreaModal
-        practiceArea={selectedPracticeArea !== null ? practiceAreas[selectedPracticeArea] : null}
-        isOpen={selectedPracticeArea !== null}
-        onClose={() => setSelectedPracticeArea(null)}
-        onContact={() => {
-          setSelectedPracticeArea(null)
-          scrollToSection("contact")
-        }}
-      />
     </div>
   )
 }
