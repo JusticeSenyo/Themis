@@ -62,3 +62,4 @@ const Logo: React.FC = () => (
 );
 
 export default Logo;
+changed the logo
