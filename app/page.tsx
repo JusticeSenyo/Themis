@@ -427,10 +427,10 @@ export default function ThemisLawFirm() {
           <div className="absolute inset-0 bg-[url('/bam2.jpeg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 text-center">
+        <div className="relative z-10 container mx-auto px-6 text-center pb-16">
           <div className="max-w-5xl mx-auto">
             <div className="animate-fade-in-up">
-              <h1 className="text-5xl md:text-7xl sm:text-base font-serif font-bold text-white mb-8 leading-tight tracking-tight">
+              <h1 className="text-5xl md:text-7xl sm:text-sm font-serif font-bold text-white mb-8 leading-tight tracking-tight">
                 World-class legal solutions for your <span className="text-[#C7A349] italic">toughst challenges</span>
               </h1>
               <p className="text-xl md:text-md text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto font-light">
@@ -449,7 +449,7 @@ export default function ThemisLawFirm() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-10 py-4 rounded-sm text-lg font-medium bg-transparent transition-all duration-300 hover:scale-105"
+                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-10 py-4 rounded-sm text-lg font-medium bg-transparent transition-all duration-300 hover:scale-105 "
                   onClick={() => scrollToSection("practice-areas")}
                 >
                   Explore Our Services
@@ -467,15 +467,24 @@ export default function ThemisLawFirm() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section
+        id="about"
+        className="py-24 bg-overlay-light diagonal-lines"
+        style={{
+          backgroundImage: `url('/plentybooks.jpg?height=800&width=1920&text=Law+Library+Books')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="container mx-auto px-6 ">
+
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight text-white dark:text-[#C7A349]">
                 About Themis Solicitors & Advocates
               </h2>
               <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+              <p className="text-xl dark:text-muted-foreground text-white max-w-4xl mx-auto leading-relaxed font-light">
                 We are a distinguished full-service legal firm committed to delivering world-class legal solutions with
                 unwavering dedication to our core values and client success.
               </p>
@@ -484,16 +493,16 @@ export default function ThemisLawFirm() {
             <div className="grid lg:grid-cols-2 gap-16 mb-20">
               <div className="space-y-12 animate-slide-in-left">
                 <div>
-                  <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Our Mission</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed font-light">
+                  <h3 className="text-3xl font-serif font-bold text-foreground mb-6 text-white dark:text-[#C7A349]">Our Mission</h3>
+                  <p className="text-lg darkLtext-muted-foreground text-white dark:text-muted-foreground leading-relaxed font-light">
                     To provide exceptional legal services that exceed client expectations while maintaining the highest
                     standards of professional integrity, innovation, and excellence in every engagement.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Our Vision</h3>
-                  <p className="text-lg text-muted-foreground leading-relaxed font-light">
+                  <h3 className="text-3xl font-serif font-bold text-foreground mb-6 text-white dark:text-[#C7A349]">Our Vision</h3>
+                  <p className="text-lg dark:text-muted-foreground text-white leading-relaxed font-light">
                     To be Ghana's premier legal firm, recognized internationally for innovative solutions,
                     client-focused service, and significant contributions to legal excellence and business growth.
                   </p>
@@ -501,7 +510,7 @@ export default function ThemisLawFirm() {
               </div>
 
               <div className="animate-slide-in-right">
-                <h3 className="text-3xl font-serif font-bold text-foreground mb-">Core Values</h3>
+                <h3 className="text-3xl font-serif font-bold text-foreground text-white dark:text-[#C7A349]">Core Values</h3>
                 <div className="space-y-6">
                   {[
                     {
@@ -542,15 +551,23 @@ export default function ThemisLawFirm() {
       </section>
 
       {/* Practice Areas Section */}
-      <section id="practice-areas" className="py-24 bg-background">
+           <section
+        id="practice-areas"
+        className="py-24 bg-overlay-light"
+        style={{
+          backgroundImage: `url('/giammarco-boscaro-zeH-ljawHtg-unsplash copy.jpg?height=800&width=1920&text=Modern+Conference+Room')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight text-white dark:text-[#C7A349]">
                 Areas of Practice
               </h2>
               <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+              <p className="text-xl dark:text-muted-foreground text-white max-w-4xl mx-auto leading-relaxed font-light">
                 Comprehensive legal services across multiple practice areas, delivering strategic solutions tailored to
                 meet all your business and personal legal requirements.
               </p>
