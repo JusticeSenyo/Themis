@@ -74,8 +74,8 @@ export default function ThemisLawFirm() {
       <div className="fixed inset-0 bg-white dark:bg-slate-900 flex items-center justify-center z-50">
         <div className="text-center space-y-8">
           <div className="relative corner-lines">
-            <div className="w-24 h-24 border-4 border-gold-500 bg-white dark:bg-slate-900 flex items-center justify-center">
-              <Scale className="h-12 w-12 text-gold-500 floating-element" />
+            <div className=" border-4 border-gold-500 bg-white dark:bg-slate-900 flex items-center justify-center">
+              <img className="w-40" src="themislogo.svg" alt="" />
             </div>
             <div className="absolute -inset-2 border border-gold-500/30"></div>
           </div>
@@ -452,15 +452,10 @@ export default function ThemisLawFirm() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 border-2 border-gold-500 bg-white dark:bg-slate-900 flex items-center justify-center corner-lines">
-                <Scale className="h-6 w-6 text-gold-500" />
+              <div className="flex items-center justify-center ">
+                <img className="w-32" src="themislogo.svg" alt="" />
               </div>
-              <div>
-                <h1 className="text-xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">
-                  THEMIS SOLICITORS
-                </h1>
-                <p className="text-xs text-slate-600 dark:text-slate-400 tracking-widest">& ADVOCATES</p>
-              </div>
+
             </div>
 
             {/* Desktop Navigation */}
