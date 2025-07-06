@@ -431,7 +431,7 @@ export default function ThemisLawFirm() {
           <div className="max-w-5xl mx-auto">
             <div className="animate-fade-in-up">
               <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight tracking-tight">
-                World-class legal solutions for your <span className="text-[#C7A349] italic">toughest challenges</span>
+                World-class legal solutions for your <span className="text-[#C7A349] italic">toughst challenges</span>
               </h1>
               <p className="text-xl md:text-md text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto font-light">
                 Themis Solicitors & Advocates delivers exceptional legal expertise across banking, corporate law,
