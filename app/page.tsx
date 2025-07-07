@@ -475,7 +475,7 @@ export default function ThemisLawFirm() {
         id="about"
         className="py-24 bg-overlay-light diagonal-lines"
         style={{
-          backgroundImage: `url('/plentybooks.jpg?height=800&width=1920&text=Law+Library+Books')`,
+          backgroundImage: `url('/wim-van-t-einde-2NWNOVE20UI-unsplash.jpg?height=800&width=1920&text=Law+Library+Books')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
