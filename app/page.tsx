@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import Logo from "../components/logo"
+import Logo from "../components/Logo"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
