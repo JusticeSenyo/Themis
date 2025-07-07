@@ -471,22 +471,23 @@ export default function ThemisLawFirm() {
       </section>
 
       {/* About Section */}
-   <section id="about" className="relative py-24 overflow-hidden">
-  {/* Background Gradient + Image Layers */}
-  <div className="absolute inset-0">
-    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"></div>
-    <div className="absolute inset-0 bg-[url('/bam2.jpeg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
+<section
+  id="about"
+  className="relative py-24 overflow-hidden bg-gradient-to-br from-background to-muted dark:from-background dark:to-muted"
+>
+  <div className="absolute inset-0 pointer-events-none">
+    {/* Optional: a subtle pattern overlay for extra visual interest */}
+    <div className="w-full h-full opacity-10 dark:opacity-10 bg-[url('/patterns/noise-light.png')] dark:bg-[url('/patterns/noise-dark.png')] bg-repeat"></div>
   </div>
 
-  {/* Foreground Content */}
   <div className="relative z-10 container mx-auto px-6">
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-20 animate-fade-in-up">
-        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight text-[#C7A349]">
+        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight text-foreground">
           About Themis Solicitors & Advocates
         </h2>
         <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
-        <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed font-light  rounded-sm">
+        <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
           We are a distinguished full-service legal firm committed to delivering world-class legal solutions with unwavering dedication to our core values and client success.
         </p>
       </div>
@@ -494,49 +495,38 @@ export default function ThemisLawFirm() {
       <div className="grid lg:grid-cols-2 gap-16 mb-20">
         <div className="space-y-12 animate-slide-in-left">
           <div>
-            <h3 className="text-3xl font-serif font-bold mb-6 text-[#C7A349]">Our Mission</h3>
-            <p className="text-lg text-white leading-relaxed font-light  rounded-sm">
+            <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Our Mission</h3>
+            <p className="text-lg text-muted-foreground leading-relaxed font-light">
               To provide exceptional legal services that exceed client expectations while maintaining the highest standards of professional integrity, innovation, and excellence in every engagement.
             </p>
           </div>
+
           <div>
-            <h3 className="text-3xl font-serif font-bold mb-6 text-[#C7A349]">Our Vision</h3>
-            <p className="text-lg text-white leading-relaxed font-light  rounded-sm">
+            <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Our Vision</h3>
+            <p className="text-lg text-muted-foreground leading-relaxed font-light">
               To be Ghana's premier legal firm, recognized internationally for innovative solutions, client-focused service, and significant contributions to legal excellence and business growth.
             </p>
           </div>
         </div>
 
         <div className="animate-slide-in-right">
-          <h3 className="text-3xl font-serif font-bold text-[#C7A349] mb-6">Core Values</h3>
+          <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Core Values</h3>
           <div className="space-y-6">
             {[
-              {
-                title: "Respect",
-                description: "We honor our clients, colleagues, and the legal profession with dignity and professionalism",
-              },
-              {
-                title: "Excellence",
-                description: "We strive for the highest quality and innovation in everything we do",
-              },
-              {
-                title: "Integrity",
-                description: "We maintain unwavering ethical standards and transparency in all our dealings",
-              },
-              {
-                title: "Results",
-                description: "We deliver measurable outcomes that create lasting value for our clients",
-              },
+              { title: "Respect", description: "We honor our clients, colleagues, and the legal profession with dignity and professionalism" },
+              { title: "Excellence", description: "We strive for the highest quality and innovation in everything we do" },
+              { title: "Integrity", description: "We maintain unwavering ethical standards and transparency in all our dealings" },
+              { title: "Results", description: "We deliver measurable outcomes that create lasting value for our clients" },
             ].map((value, index) => (
               <div
                 key={index}
-                className="flex items-start space-x-4 p-6 bg-black/50 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in-up"
+                className="flex items-start space-x-4 p-6 bg-card rounded-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="w-3 h-3 bg-[#C7A349] rounded-sm mt-2 flex-shrink-0"></div>
                 <div>
-                  <h4 className="font-bold text-white text-lg mb-2">{value.title}</h4>
-                  <p className="text-slate-300 leading-relaxed">{value.description}</p>
+                  <h4 className="font-bold text-foreground text-lg mb-2">{value.title}</h4>
+                  <p className="text-muted-foreground leading-relaxed">{value.description}</p>
                 </div>
               </div>
             ))}
@@ -546,6 +536,7 @@ export default function ThemisLawFirm() {
     </div>
   </div>
 </section>
+
 
 
       {/* Practice Areas Section */}
@@ -856,15 +847,17 @@ export default function ThemisLawFirm() {
 
       {/* Clients & Industries Section */}
       <section id="clients" className=" relative py-24 bg-background">
-          <div className="absolute inset-0 bg-[url('/inaki-del-olmo-NIJuEQw0RKg-unsplash.jpg')] bg-cover bg-center opacity-20 blur-sm"></div>
-        <div className="container mx-auto px-6">
+        <div className="absolute inset-0 z-10">
+          <div className="absolute inset-0 bg-[url('/inaki-del-olmo-NIJuEQw0RKg-unsplash.jpg')] bg-cover bg-center opacity-90 blur-sm"></div>
+          </div>
+        <div className="container mx-auto px-6 relative z-20">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#C7A349] mb-6 tracking-tight">
                 Clients & Industries
               </h2>
               <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light text-white">
                 We serve diverse industries with specialized legal expertise tailored to each sector's unique
                 challenges, opportunities, and regulatory requirements.
               </p>
@@ -911,25 +904,25 @@ export default function ThemisLawFirm() {
             </div>
 
             <div className="mt-20 text-center animate-fade-in-up">
-              <blockquote className="text-md md:text-3xl font-serif italic text-muted-foreground max-w-5xl mx-auto leading-relaxed">
+              <blockquote className="text-md md:text-3xl font-serif italic text-white max-w-5xl mx-auto leading-relaxed">
                 "Excellence in legal service is not just our goal—it's our standard. We measure our success by the
                 transformative impact we create for our clients."
               </blockquote>
-              <p className="text-muted-foreground mt-6 font-medium">— Themis Solicitors & Advocates</p>
+              <p className="text-white mt-6 font-medium">— Themis Solicitors & Advocates</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className=" relative py-24 bg-slate-900 dark:bg-slate-950 text-white  overflow-hidden">
+      <section id="contact" className=" relative py-24  dark:bg-slate-950 text-white  overflow-hidden">
         <div className="absolute inset-0 bg-[url('tingey-injury-law-firm-DZpc4UY8ZtY-unsplash copy.jpg?height=800&width=1200')] bg-cover bg-center opacity-5"></div>
         <div className="relative z-10 container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight">Contact Us</h2>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight text-[#C7A349]">Contact Us</h2>
               <div className="w-24 h-1 bg-[#C7A349]-400 mx-auto mb-8 rounded-sm animate-scale-in"></div>
-              <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed font-light">
+              <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-light dark:text-white">
                 Ready to discuss your legal needs? Connect with our experienced team today for a consultation tailored
                 to your specific requirements.
               </p>
@@ -945,7 +938,7 @@ export default function ThemisLawFirm() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg mb-2">Office Address</h4>
-                      <p className="text-slate-300 leading-relaxed">
+                      <p className="text-slate-600 leading-relaxed dark:text-white">
                         No. DH20 Biakpa Close
                         <br />
                         North Kaneshie, Accra
@@ -960,8 +953,8 @@ export default function ThemisLawFirm() {
                       <Phone className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Phone</h4>
-                      <p className="text-slate-300">+233 55 340 9100</p>
+                      <h4 className="font-semibold text-lg mb-2 ">Phone</h4>
+                      <p className=" dark:text-white text-slate-600">+233 55 340 9100</p>
                     </div>
                   </div>
 
@@ -971,7 +964,7 @@ export default function ThemisLawFirm() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg mb-2">Email</h4>
-                      <p className="text-slate-300">info@themispruc.com</p>
+                      <p className="text-slate-600 dark:text-white">info@themispruc.com</p>
                     </div>
                   </div>
                 </div>
@@ -981,7 +974,7 @@ export default function ThemisLawFirm() {
                     <Shield className="h-6 w-6 text-[#C7A349]-400 mt-1 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold text-[#C7A349]-400 mb-3">Security Notice</h4>
-                      <p className="text-sm text-slate-300 leading-relaxed">
+                      <p className="text-sm text-slate-600 leading-relaxed dark:text-[#C7A349]">
                         To protect against fraud, please verify that all communications originate from our official
                         email domain: @themispruc.com. We will never request sensitive information through unofficial
                         channels or unsecured communications.
@@ -994,7 +987,7 @@ export default function ThemisLawFirm() {
               <div className="animate-slide-in-right">
                 <Card className="bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-md">
                   <CardContent className="p-8">
-                    <h3 className="text-md font-serif font-bold mb-6">Schedule a Consultation</h3>
+                    <h3 className="text-md font-serif font-bold mb-6 text-[#C7A349]">Schedule a Consultation</h3>
                     <form className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
