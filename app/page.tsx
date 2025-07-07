@@ -471,213 +471,206 @@ export default function ThemisLawFirm() {
       </section>
 
       {/* About Section */}
-      <section
-        id="about"
-        className="py-24 bg-overlay-light diagonal-lines"
-        style={{
-          backgroundImage: `url('/patrick-fore-H5Lf0nGyetk-unsplash copy.jpg?height=800&width=1920&text=Law+Library+Books')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6 ">
+   <section id="about" className="relative py-24 overflow-hidden">
+  {/* Background Gradient + Image Layers */}
+  <div className="absolute inset-0">
+    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"></div>
+    <div className="absolute inset-0 bg-[url('/bam2.jpeg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
+  </div>
 
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight  text-[#C7A349]">
-                About Themis Solicitors & Advocates
-              </h2>
-              <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
-              <p className="text-xl dark:text-muted-foreground text-white max-w-4xl mx-auto leading-relaxed font-light bg-black/50 rounded-sm">
-                We are a distinguished full-service legal firm committed to delivering world-class legal solutions with
-                unwavering dedication to our core values and client success.
-              </p>
-            </div>
+  {/* Foreground Content */}
+  <div className="relative z-10 container mx-auto px-6">
+    <div className="max-w-7xl mx-auto">
+      <div className="text-center mb-20 animate-fade-in-up">
+        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight text-[#C7A349]">
+          About Themis Solicitors & Advocates
+        </h2>
+        <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
+        <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed font-light  rounded-sm">
+          We are a distinguished full-service legal firm committed to delivering world-class legal solutions with unwavering dedication to our core values and client success.
+        </p>
+      </div>
 
-            <div className="grid lg:grid-cols-2 gap-16 mb-20">
-              <div className="space-y-12 animate-slide-in-left">
-                <div>
-                  <h3 className="text-3xl font-serif font-bold mb-6  text-[#C7A349]">Our Mission</h3>
-                  <p className="text-lg darkLtext-muted-foreground text-white dark:text-muted-foreground leading-relaxed font-light  rounded-sm bg-black/50 rounded-sm">
-                    To provide exceptional legal services that exceed client expectations while maintaining the highest
-                    standards of professional integrity, innovation, and excellence in every engagement.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-serif font-bold mb-6  text-[#C7A349]">Our Vision</h3>
-                  <p className="text-lg dark:text-muted-foreground text-white leading-relaxed font-light bg-black/50 rounded-sm">
-                    To be Ghana's premier legal firm, recognized internationally for innovative solutions,
-                    client-focused service, and significant contributions to legal excellence and business growth.
-                  </p>
-                </div>
-              </div>
-
-              <div className="animate-slide-in-right ">
-                <h3 className="text-3xl font-serif font-bold text-[#C7A349]">Core Values</h3>
-                <div className="space-y-6">
-                  {[
-                    {
-                      title: "Respect",
-                      description:
-                        "We honor our clients, colleagues, and the legal profession with dignity and professionalism",
-                    },
-                    {
-                      title: "Excellence",
-                      description: "We strive for the highest quality and innovation in everything we do",
-                    },
-                    {
-                      title: "Integrity",
-                      description: "We maintain unwavering ethical standards and transparency in all our dealings",
-                    },
-                    {
-                      title: "Results",
-                      description: "We deliver measurable outcomes that create lasting value for our clients",
-                    },
-                  ].map((value, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start space-x-4 p-6 bg-card rounded-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in-up"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <div className="w-3 h-3 bg-[#C7A349] rounded-sm mt-2 flex-shrink-0"></div>
-                      <div>
-                        <h4 className="font-bold text-foreground text-lg mb-2">{value.title}</h4>
-                        <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+      <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <div className="space-y-12 animate-slide-in-left">
+          <div>
+            <h3 className="text-3xl font-serif font-bold mb-6 text-[#C7A349]">Our Mission</h3>
+            <p className="text-lg text-white leading-relaxed font-light  rounded-sm">
+              To provide exceptional legal services that exceed client expectations while maintaining the highest standards of professional integrity, innovation, and excellence in every engagement.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-3xl font-serif font-bold mb-6 text-[#C7A349]">Our Vision</h3>
+            <p className="text-lg text-white leading-relaxed font-light  rounded-sm">
+              To be Ghana's premier legal firm, recognized internationally for innovative solutions, client-focused service, and significant contributions to legal excellence and business growth.
+            </p>
           </div>
         </div>
-      </section>
+
+        <div className="animate-slide-in-right">
+          <h3 className="text-3xl font-serif font-bold text-[#C7A349] mb-6">Core Values</h3>
+          <div className="space-y-6">
+            {[
+              {
+                title: "Respect",
+                description: "We honor our clients, colleagues, and the legal profession with dignity and professionalism",
+              },
+              {
+                title: "Excellence",
+                description: "We strive for the highest quality and innovation in everything we do",
+              },
+              {
+                title: "Integrity",
+                description: "We maintain unwavering ethical standards and transparency in all our dealings",
+              },
+              {
+                title: "Results",
+                description: "We deliver measurable outcomes that create lasting value for our clients",
+              },
+            ].map((value, index) => (
+              <div
+                key={index}
+                className="flex items-start space-x-4 p-6 bg-black/50 rounded-sm shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-3 h-3 bg-[#C7A349] rounded-sm mt-2 flex-shrink-0"></div>
+                <div>
+                  <h4 className="font-bold text-white text-lg mb-2">{value.title}</h4>
+                  <p className="text-slate-300 leading-relaxed">{value.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Practice Areas Section */}
-           <section
-        id="practice-areas"
-        className="py-24 bg-overlay-light"
-        style={{
-          backgroundImage: `url('/giammarco-boscaro-zeH-ljawHtg-unsplash copy.jpg?height=800&width=1920&text=Modern+Conference+Room')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20 animate-fade-in-up">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight text-white dark:text-[#C7A349]">
-                Areas of Practice
-              </h2>
-              <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
-              <p className="text-xl dark:text-muted-foreground text-white max-w-4xl mx-auto leading-relaxed font-light">
-                Comprehensive legal services across multiple practice areas, delivering strategic solutions tailored to
-                meet all your business and personal legal requirements.
-              </p>
-            </div>
+<section id="practice-areas" className="relative py-24 overflow-hidden">
+  {/* Gradient + Image Background Layers */}
+  <div className="absolute inset-0">
+    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"></div>
+    <div className="absolute inset-0 bg-[url('/giammarco-boscaro-zeH-ljawHtg-unsplash%20copy.jpg?height=800&width=1920&text=Modern+Conference+Room')] bg-cover bg-center opacity-10"></div>
+  </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {practiceAreas.map((area, index) => (
-                <Card
-                  key={index}
-                  className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+  {/* Foreground Content */}
+  <div className="relative z-10 container mx-auto px-6">
+    <div className="max-w-7xl mx-auto">
+      <div className="text-center mb-20 animate-fade-in-up">
+        <h2 className="text-4xl md:text-5xl font-serif font-bold text-white dark:text-[#C7A349] mb-6 tracking-tight">
+          Areas of Practice
+        </h2>
+        <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
+        <p className="text-xl text-white dark:text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+          Comprehensive legal services across multiple practice areas, delivering strategic solutions tailored to meet all your business and personal legal requirements.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {practiceAreas.map((area, index) => (
+          <Card
+            key={index}
+            className="group hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-0 shadow-lg animate-fade-in-up"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
+            <CardContent className="p-8">
+              <div className="mb-6">
+                <area.icon className="h-14 w-14 text-[#C7A349] group-hover:scale-110 transition-transform duration-300" />
+              </div>
+              <h3 className="text-xl font-serif font-bold text-black dark:text-foreground mb-4 leading-tight">{area.title}</h3>
+              <p className="text-black dark:text-muted-foreground leading-relaxed font-light mb-4">{area.description}</p>
+              <button
+                onClick={() => setExpandedPracticeArea(expandedPracticeArea === index ? null : index)}
+                className="flex items-center text-[#C7A349] font-medium group-hover:translate-x-2 transition-all duration-300 hover:text-[#C7A349]-700"
+              >
+                <span className="text-sm">Learn More</span>
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Expanded Practice Area Details */}
+      {expandedPracticeArea !== null && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-card rounded-sm shadow-md max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
+            <div className="p-8">
+              <div className="flex items-start justify-between mb-6">
+                <div className="flex items-center space-x-4">
+                  {React.createElement(practiceAreas[expandedPracticeArea].icon, {
+                    className: "h-12 w-12 text-[#C7A349]",
+                  })}
+                  <h3 className="text-3xl font-serif font-bold text-foreground">
+                    {practiceAreas[expandedPracticeArea].title}
+                  </h3>
+                </div>
+                <button
+                  onClick={() => setExpandedPracticeArea(null)}
+                  className="p-2 hover:bg-muted rounded-sm transition-colors"
                 >
-                  <CardContent className="p-8">
-                    <div className="mb-6">
-                      <area.icon className="h-14 w-14 text-[#C7A349] group-hover:scale-110 transition-transform duration-300" />
-                    </div>
-                    <h3 className="text-xl font-serif font-bold text-foreground mb-4 leading-tight">{area.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed font-light mb-4">{area.description}</p>
-                    <button
-                      onClick={() => setExpandedPracticeArea(expandedPracticeArea === index ? null : index)}
-                      className="flex items-center text-[#C7A349] font-medium group-hover:translate-x-2 transition-all duration-300 hover:text-[#C7A349]-700"
-                    >
-                      <span className="text-sm">Learn More</span>
-                      <ChevronRight className="ml-2 h-4 w-4" />
-                    </button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  <X className="h-6 w-6 text-muted-foreground" />
+                </button>
+              </div>
 
-            {/* Expanded Practice Area Details */}
-            {expandedPracticeArea !== null && (
-              <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-                <div className="bg-card rounded-sm shadow-md max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-scale-in">
-                  <div className="p-8">
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="flex items-center space-x-4">
-                        {React.createElement(practiceAreas[expandedPracticeArea].icon, {
-                          className: "h-12 w-12 text-[#C7A349]",
-                        })}
-                        <h3 className="text-3xl font-serif font-bold text-foreground">
-                          {practiceAreas[expandedPracticeArea].title}
-                        </h3>
-                      </div>
-                      <button
-                        onClick={() => setExpandedPracticeArea(null)}
-                        className="p-2 hover:bg-muted rounded-sm transition-colors"
-                      >
-                        <X className="h-6 w-6 text-muted-foreground" />
-                      </button>
-                    </div>
+              <div className="space-y-8">
+                <div>
+                  <h4 className="text-xl font-semibold text-foreground mb-4">Overview</h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {practiceAreas[expandedPracticeArea].details.overview}
+                  </p>
+                </div>
 
-                    <div className="space-y-8">
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Overview</h4>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {practiceAreas[expandedPracticeArea].details.overview}
-                        </p>
+                <div>
+                  <h4 className="text-xl font-semibold text-foreground mb-4">Our Services</h4>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    {practiceAreas[expandedPracticeArea].details.services.map((service, idx) => (
+                      <div key={idx} className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-[#C7A349] rounded-sm flex-shrink-0"></div>
+                        <span className="text-muted-foreground">{service}</span>
                       </div>
-
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Our Services</h4>
-                        <div className="grid md:grid-cols-2 gap-3">
-                          {practiceAreas[expandedPracticeArea].details.services.map((service, idx) => (
-                            <div key={idx} className="flex items-center space-x-3">
-                              <div className="w-2 h-2 bg-[#C7A349] rounded-sm flex-shrink-0"></div>
-                              <span className="text-muted-foreground">{service}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Experience & Expertise</h4>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {practiceAreas[expandedPracticeArea].details.experience}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="text-xl font-semibold text-foreground mb-4">Key Clients</h4>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {practiceAreas[expandedPracticeArea].details.keyClients}
-                        </p>
-                      </div>
-
-                      <div className="pt-6 border-t border-border">
-                        <Button
-                          onClick={() => {
-                            setExpandedPracticeArea(null)
-                            scrollToSection("contact")
-                          }}
-                          className="bg-[#C7A349] hover:bg-[#C7A349]-700 text-white px-8 py-3 rounded-sm font-medium transition-all duration-300 hover:scale-105"
-                        >
-                          Discuss Your Needs
-                          <ArrowRight className="ml-2 h-5 w-5" />
-                        </Button>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
+
+                <div>
+                  <h4 className="text-xl font-semibold text-foreground mb-4">Experience & Expertise</h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {practiceAreas[expandedPracticeArea].details.experience}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-xl font-semibold text-foreground mb-4">Key Clients</h4>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {practiceAreas[expandedPracticeArea].details.keyClients}
+                  </p>
+                </div>
+
+                <div className="pt-6 border-t border-border">
+                  <Button
+                    onClick={() => {
+                      setExpandedPracticeArea(null)
+                      scrollToSection("contact")
+                    }}
+                    className="bg-[#C7A349] hover:bg-[#C7A349]-700 text-white px-8 py-3 rounded-sm font-medium transition-all duration-300 hover:scale-105"
+                  >
+                    Discuss Your Needs
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
-      </section>
+      )}
+    </div>
+  </div>
+</section>
+
 
       {/* Team Section */}
       {/* <section id="team" className="py-24 bg-muted/30">
