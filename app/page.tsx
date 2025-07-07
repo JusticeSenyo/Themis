@@ -466,7 +466,7 @@ export default function ThemisLawFirm() {
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2  animate-bounce">
           
-        <ArrowDown className="mx-auto h-6 w-6 text-gray animate-bounce" />
+        {/* <ArrowDown className="mx-auto h-6 w-6 text-gray animate-bounce" /> */}
         </div>
       </section>
 
@@ -475,7 +475,7 @@ export default function ThemisLawFirm() {
         id="about"
         className="py-24 bg-overlay-light diagonal-lines"
         style={{
-          backgroundImage: `url('/wim-van-t-einde-2NWNOVE20UI-unsplash.jpg?height=800&width=1920&text=Law+Library+Books')`,
+          backgroundImage: `url('/patrick-fore-H5Lf0nGyetk-unsplash copy.jpg?height=800&width=1920&text=Law+Library+Books')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -488,7 +488,7 @@ export default function ThemisLawFirm() {
                 About Themis Solicitors & Advocates
               </h2>
               <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
-              <p className="text-xl dark:text-muted-foreground text-white max-w-4xl mx-auto leading-relaxed font-light">
+              <p className="text-xl dark:text-muted-foreground text-white max-w-4xl mx-auto leading-relaxed font-light bg-black/50 rounded-sm">
                 We are a distinguished full-service legal firm committed to delivering world-class legal solutions with
                 unwavering dedication to our core values and client success.
               </p>
@@ -498,7 +498,7 @@ export default function ThemisLawFirm() {
               <div className="space-y-12 animate-slide-in-left">
                 <div>
                   <h3 className="text-3xl font-serif font-bold mb-6  text-[#C7A349]">Our Mission</h3>
-                  <p className="text-lg darkLtext-muted-foreground text-white dark:text-muted-foreground leading-relaxed font-light">
+                  <p className="text-lg darkLtext-muted-foreground text-white dark:text-muted-foreground leading-relaxed font-light  rounded-sm bg-black/50 rounded-sm">
                     To provide exceptional legal services that exceed client expectations while maintaining the highest
                     standards of professional integrity, innovation, and excellence in every engagement.
                   </p>
@@ -506,7 +506,7 @@ export default function ThemisLawFirm() {
 
                 <div>
                   <h3 className="text-3xl font-serif font-bold mb-6  text-[#C7A349]">Our Vision</h3>
-                  <p className="text-lg dark:text-muted-foreground text-white leading-relaxed font-light">
+                  <p className="text-lg dark:text-muted-foreground text-white leading-relaxed font-light bg-black/50 rounded-sm">
                     To be Ghana's premier legal firm, recognized internationally for innovative solutions,
                     client-focused service, and significant contributions to legal excellence and business growth.
                   </p>
