@@ -857,7 +857,8 @@ export default function ThemisLawFirm() {
             </section>
 
       {/* Clients & Industries Section */}
-      <section id="clients" className="py-24 bg-background">
+      <section id="clients" className=" relative py-24 bg-background">
+          <div className="absolute inset-0 bg-[url('/inaki-del-olmo-NIJuEQw0RKg-unsplash.jpg')] bg-cover bg-center opacity-20 blur-sm"></div>
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20 animate-fade-in-up">
@@ -923,8 +924,8 @@ export default function ThemisLawFirm() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-slate-900 dark:bg-slate-950 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1200')] bg-cover bg-center opacity-5"></div>
+      <section id="contact" className=" relative py-24 bg-slate-900 dark:bg-slate-950 text-white  overflow-hidden">
+        <div className="absolute inset-0 bg-[url('tingey-injury-law-firm-DZpc4UY8ZtY-unsplash copy.jpg?height=800&width=1200')] bg-cover bg-center opacity-5"></div>
         <div className="relative z-10 container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20 animate-fade-in-up">
