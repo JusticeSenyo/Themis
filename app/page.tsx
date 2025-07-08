@@ -86,12 +86,12 @@ export default function ThemisLawFirm() {
       <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
         <div className="text-center space-y-6">
           <div className="relative">
-            {/* <img src="themislogo.svg" alt="" /> */}
+            <img className="w-40" src="themislogo.png" alt="" /> 
             
-            <Logo/>
+            {/* <Logo/> */}
             <div className="absolute inset-0 animate-ping">
-            <Logo/>
-              {/* <img src="themislogo.svg" alt="" /> */}
+            {/* <Logo/> */}
+              <img className="w-40" src="themislogo.png" alt="" />
             </div>
           </div>
           <div className="space-y-3">
@@ -341,8 +341,8 @@ export default function ThemisLawFirm() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4 animate-slide-in-left">
               <div className="relative">
-            {/* <img src="themislogo.svg" alt="" /> */}
-            <Logo/>
+            <img className="w-40" src="themislogo.png" alt="" />
+            {/* <Logo/> */}
                 
               </div>
             </div>
@@ -733,8 +733,8 @@ export default function ThemisLawFirm() {
                         <div className="absolute inset-0 bg-[url('/team.webp?height=400&width')] bg-cover bg-center opacity-20"></div>
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="text-center">
-                            {/* <img src="themislogo.svg" alt="" /> */}
-                            <Logo/>
+                            <img className="w-40" src="themislogo.png" alt="" />
+                            {/* <Logo/> */}
                             {/* <Scale className="h-24 w-24 text-[#C7A349] mx-auto mb-4" /> */}
                             <div className="text-md font-serif font-bold text-slate-700 dark:text-slate-300">
                               Excellence in Legal Practice
@@ -1078,8 +1078,8 @@ export default function ThemisLawFirm() {
             <div className="grid md:grid-cols-3 gap-12 mb-12">
               <div>
                 <div className="flex items-center space-x-3 mb-6">
-                 {/* <img src="themislogo.svg" alt="" /> */}
-                 <Logo/>
+                 <img className="w-40" src="themislogo.png" alt="" />
+                 {/* <Logo/> */}
                 </div>
                 <p className="text-slate-400 leading-relaxed font-light">
                   Delivering world-class legal solutions with excellence, integrity, and unwavering commitment to client
