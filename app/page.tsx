@@ -193,7 +193,7 @@ export default function ThemisLawFirm() {
         ],
         experience:
           "We have advised leading FinTech companies on regulatory compliance, licensing, and innovative product launches in Ghana's evolving digital finance landscape.",
-        keyClients: "FinTech startups, digital payment providers, Digital service providers and technology platforms.",
+        keyClients: "FinTech startups, Digital service providers and technology platforms.",
       },
     },
     {
@@ -245,7 +245,7 @@ export default function ThemisLawFirm() {
       icon: Scale,
       details: {
         overview:
-          "Our Litigation practice provides aggressive and strategic representation in commercial disputes, debt recovery, and complex litigation matters.",
+          "Our Litigation practice provides aggressive and strategic representation in commercial disputes, debt recovery and complex litigation matters.",
         services: [
           "Commercial litigation",
           "Debt recovery and enforcement",
@@ -257,7 +257,7 @@ export default function ThemisLawFirm() {
         experience:
           "Our litigation team has successfully recovered millions of dollars for clients and has extensive experience in high-stakes commercial disputes before Ghana's courts.",
         keyClients:
-          "Financial institutions, multinational corporations, government entities, and high-net-worth individuals.",
+          "Financial institutions, multinational corporations, government entities and high-net-worth individuals.",
       },
     },
     {
@@ -936,7 +936,7 @@ export default function ThemisLawFirm() {
                       <MapPin className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Office Address</h4>
+                      <h4 className="font-semibold text-lg text-slate-600 mb-2 dark:text-white">Office Address</h4>
                       <p className="text-slate-600 leading-relaxed dark:text-white">
                         No. DH20 Biakpa Close
                         <br />
@@ -952,7 +952,7 @@ export default function ThemisLawFirm() {
                       <Phone className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg mb-2 ">Phone</h4>
+                      <h4 className="font-semibold text-lg mb-2 text-slate-600 dark:text-white">Phone</h4>
                       <p className=" dark:text-white text-slate-600">+233 55 340 9100</p>
                     </div>
                   </div>
@@ -962,17 +962,17 @@ export default function ThemisLawFirm() {
                       <Mail className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg mb-2">Email</h4>
+                      <h4 className="font-semibold text-lg mb-2 text-slate-600 dark:text-white">Email</h4>
                       <p className="text-slate-600 dark:text-white">council@themispruc.com</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-12 p-6 bg-[#C7A349]/10 border border-[#C7A349]/20 rounded-sm backdrop-blur-sm">
+                <div className="mt-12 p-6 bg-[#C7A349]/7 border border-[#C7A349] rounded-sm backdrop-blur-sm">
                   <div className="flex items-start space-x-4">
-                    <Shield className="h-6 w-6 text-[#C7A349]-400 mt-1 flex-shrink-0" />
+                    <Shield className="h-6 w-6 text-[#C7A349] mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-[#C7A349]-400 mb-3">Security Notice</h4>
+                      <h4 className="font-semibold mb-3 text-slate-600 dark:text-[#C7A349]">Security Notice</h4>
                       <p className="text-sm text-slate-600 leading-relaxed dark:text-[#C7A349]">
                         To protect against fraud, please verify that all communications originate from our official
                         email domain: @themispruc.com. We will never request sensitive information through unofficial
@@ -994,6 +994,7 @@ export default function ThemisLawFirm() {
                             First Name
                           </label>
                           <input
+                          name="firstName"
                             type="text"
                             className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
                             placeholder="Your first name"
@@ -1004,6 +1005,7 @@ export default function ThemisLawFirm() {
                             Last Name
                           </label>
                           <input
+                          name="firstName"
                             type="text"
                             className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
                             placeholder="Your last name"
@@ -1015,6 +1017,7 @@ export default function ThemisLawFirm() {
                           Email Address
                         </label>
                         <input
+                        name="email"
                           type="email"
                           className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
                           placeholder="your.email@example.com"
@@ -1025,6 +1028,7 @@ export default function ThemisLawFirm() {
                           Phone Number
                         </label>
                         <input
+                        name="phone"
                           type="tel"
                           className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
                           placeholder="+233 XX XXX XXXX"
@@ -1034,7 +1038,7 @@ export default function ThemisLawFirm() {
                         <label className="block text-sm font-semibold mb-3 text-slate-700 dark:text-slate-300">
                           Legal Matter
                         </label>
-                        <select className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white">
+                        <select className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"name="legalMatter">
                           <option>Select practice area</option>
                           <option>Banking & Securities Law</option>
                           <option>Insurance Law</option>
@@ -1052,6 +1056,7 @@ export default function ThemisLawFirm() {
                           Message
                         </label>
                         <textarea
+                        name="message"
                           rows={4}
                           className="w-full p-4 border border-slate-300 dark:border-slate rounded-sm focus:ring-2 focus:ring-[#C7A349] focus:border-transparent transition-all duration-300 bg-white dark:bg-slate-700 text-slate-900 dark:text-white"
                           placeholder="Please describe your legal needs and how we can assist you..."
@@ -1074,8 +1079,9 @@ export default function ThemisLawFirm() {
       <footer className="bg-slate-950 dark:bg-black text-slate-400 py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-12 mb-12">
-              <div>
+            <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between intems-center md:items-start">
+
+              <div className=" w-80">
                 <div className="flex items-center space-x-3 mb-6">
                  <img className="w-40" src="themislogo.png" alt="" />
                  {/* <Logo/> */}
@@ -1086,9 +1092,11 @@ export default function ThemisLawFirm() {
                 </p>
               </div>
 
-              <div>
-                <h4 className="font-semibold text-white mb-4">Quick Links</h4>
-                <div className="space-y-2">
+              <div className="flex-4"></div>
+
+              <div className=" grid items-center justify-center">
+                <h4 className="font-semibold text-white mb-4 text-center">Quick Links</h4>
+                <div className="space-y-2 grid items-center justify-center ">
                   {["About Us", "Practice Areas", "Our Team", "Contact"].map((link) => (
                     <button key={link} className="block text-slate-400 hover:text-[#C7A349]-400 transition-colors">
                       {link}
@@ -1096,19 +1104,21 @@ export default function ThemisLawFirm() {
                   ))}
                 </div>
               </div>
+            </div>
+              <div>
 
               <div>
-                <h4 className="font-semibold text-white mb-4">Legal Notice</h4>
+                <h4 className="font-semibold text-white mb-4 text-center">Legal Notice</h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
                   Themis Solicitors & Advocates PRUC is a private unlimited company registered in Ghana with registration number CU000470524 and Tax Identification Number C0064121674. The firm and its lawyers are licensed and regulated by the General Legal Council of Ghana.
                 </p>
               </div>
-            </div>
+              </div>
 
-            <div className="border-t border-slate-800 pt-8">
+            <div className="border- border-slate-800 pt-8">
               <div className="flex flex-col md:flex-row justify-between items-center">
                 <p className="text-sm text-slate-500 mb-4 md:mb-0">
-                  © 2024 Themis Solicitors & Advocates PRUC. All rights reserved.
+                  © 2025 Themis Solicitors & Advocates PRUC. All rights reserved.
                 </p>
                 <div className="flex space-x-6 text-sm text-slate-500">
                   <button className="hover:text-[#C7A349]-400 transition-colors">Privacy Policy</button>
