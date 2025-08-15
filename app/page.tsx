@@ -95,7 +95,7 @@ export default function ThemisLawFirm() {
             </div>
           </div>
           <div className="space-y-3">
-            <div className="text-foreground text-xl font-serif animate-fade-in">Themis Solicitors & Advocates</div>
+            <div className="text-foreground text-xl font-serif animate-fade-in">Themis Solicitors & Advocates PRUC</div>
             <div className="w-64 h-2 bg-muted mx-auto rounded-sm overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-[#C7A349]-500 to-[#C7A349] rounded-sm transition-all duration-300 ease-out"
@@ -113,14 +113,14 @@ export default function ThemisLawFirm() {
     {
       title: "Banking & Securities Law",
       description:
-        "Comprehensive regulatory compliance, transaction structuring, and advisory services for financial institutions and capital markets participants.",
+        "Comprehensive regulatory compliance, transaction structuring, and advisory services for financial institutions and capital market participants.",
       icon: Building,
       details: {
         overview:
-          "Our Banking & Securities Law practice provides comprehensive legal services to financial institutions, investment firms, and capital markets participants across Ghana and West Africa.",
+          "Our Banking & Securities Law practice provides comprehensive legal services to financial institutions, investment firms, and capital market participants across Ghana and West Africa.",
         services: [
           "Regulatory compliance and licensing",
-          "Capital markets transactions",
+          "Capital market transactions",
           "Banking operations and governance",
           "Securities offerings and listings",
           "Financial services litigation",
@@ -170,7 +170,7 @@ export default function ThemisLawFirm() {
           "Technology transfer agreements",
         ],
         experience:
-          "We have successfully registered thousands of trademarks and patents, and have extensive experience in IP enforcement actions and licensing negotiations.",
+          "We have successfully registered majortrademarks and patents, and have extensive experience in IP related negotiations.",
         keyClients:
           "Multinational corporations, technology companies, pharmaceutical companies, and creative industries.",
       },
@@ -193,7 +193,7 @@ export default function ThemisLawFirm() {
         ],
         experience:
           "We have advised leading FinTech companies on regulatory compliance, licensing, and innovative product launches in Ghana's evolving digital finance landscape.",
-        keyClients: "FinTech startups, digital payment providers, cryptocurrency exchanges, and technology platforms.",
+        keyClients: "FinTech startups, digital payment providers, Digital service providers and technology platforms.",
       },
     },
     {
@@ -214,30 +214,30 @@ export default function ThemisLawFirm() {
         ],
         experience:
           "We have extensive experience in major mining and oil & gas projects, including advising on billion-dollar investments and complex joint venture structures.",
-        keyClients: "International mining companies, oil & gas operators, service providers, and government entities.",
+        keyClients: "International mining companies, oil & gas operators, service providers and government entities.",
       },
     },
-    {
-      title: "Corporate Transactions",
-      description:
-        "Strategic guidance on mergers, acquisitions, joint ventures, private equity transactions, and complex corporate restructuring matters.",
-      icon: Users,
-      details: {
-        overview:
-          "Our Corporate Transactions practice handles complex M&A transactions, private equity deals, and corporate restructuring across various industries.",
-        services: [
-          "Mergers and acquisitions",
-          "Private equity and venture capital",
-          "Joint ventures and strategic alliances",
-          "Corporate restructuring",
-          "Due diligence and transaction support",
-          "Corporate governance advisory",
-        ],
-        experience:
-          "We have advised on some of Ghana's largest M&A transactions, including cross-border deals worth hundreds of millions of dollars.",
-        keyClients: "Multinational corporations, private equity funds, investment banks, and high-growth companies.",
-      },
-    },
+    // {
+    //   title: "Corporate Transactions",
+    //   description:
+    //     "Strategic guidance on mergers, acquisitions, joint ventures, private equity transactions, and complex corporate restructuring matters.",
+    //   icon: Users,
+    //   details: {
+    //     overview:
+    //       "Our Corporate Transactions practice handles complex M&A transactions, private equity deals, and corporate restructuring across various industries.",
+    //     services: [
+    //       "Mergers and acquisitions",
+    //       "Private equity and venture capital",
+    //       "Joint ventures and strategic alliances",
+    //       "Corporate restructuring",
+    //       "Due diligence and transaction support",
+    //       "Corporate governance advisory",
+    //     ],
+    //     experience:
+    //       "We have advised on some of Ghana's largest M&A transactions, including cross-border deals worth hundreds of millions of dollars.",
+    //     keyClients: "Multinational corporations, private equity funds, investment banks, and high-growth companies.",
+    //   },
+    // },
     {
       title: "Debt Recovery & Commercial Litigation",
       description:
@@ -435,11 +435,10 @@ export default function ThemisLawFirm() {
           <div className="max-w-5xl mx-auto">
             <div className="animate-fade-in-up">
               <h1 className="text-5xl md:text-7xl sm:text-sm font-serif font-bold text-white mb-8 leading-tight tracking-tight">
-                World-class legal solutions for your <span className="text-[#C7A349] italic">toughst challenges</span>
+                World-class legal solutions for your <span className="text-[#C7A349] italic">toughest  challenges</span>
               </h1>
               <p className="text-xl md:text-md text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto font-light">
-                Themis Solicitors & Advocates delivers exceptional legal expertise across banking, corporate law,
-                intellectual property, and natural resources throughout Ghana and beyond.
+                Themis Solicitors & Advocates PRUC delivers exceptional legal expertise across banking, Technology law, intellectual property and natural resources throughout Ghana and beyond.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <Button
@@ -484,7 +483,7 @@ export default function ThemisLawFirm() {
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-20 animate-fade-in-up">
         <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight text-foreground">
-          About Themis Solicitors & Advocates
+          About Themis Solicitors & Advocates PRUC
         </h2>
         <div className="w-24 h-1 bg-[#C7A349] mx-auto mb-8 rounded-sm animate-scale-in"></div>
         <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
@@ -497,14 +496,14 @@ export default function ThemisLawFirm() {
           <div>
             <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Our Mission</h3>
             <p className="text-lg text-muted-foreground leading-relaxed font-light">
-              To provide exceptional legal services that exceed client expectations while maintaining the highest standards of professional integrity, innovation, and excellence in every engagement.
+              To provide exceptional legal services that exceed client expectations while maintaining the highest standards of professional integrity, innovation and excellence in every engagement.
             </p>
           </div>
 
           <div>
             <h3 className="text-3xl font-serif font-bold text-foreground mb-6">Our Vision</h3>
             <p className="text-lg text-muted-foreground leading-relaxed font-light">
-              To be Ghana's premier legal firm, recognized internationally for innovative solutions, client-focused service, and significant contributions to legal excellence and business growth.
+              To be Ghana's premier legal firm, recognized internationally for innovative solutions, client-focused service and business growth.
             </p>
           </div>
         </div>
@@ -908,7 +907,7 @@ export default function ThemisLawFirm() {
                 "Excellence in legal service is not just our goal—it's our standard. We measure our success by the
                 transformative impact we create for our clients."
               </blockquote>
-              <p className="text-white mt-6 font-medium">— Themis Solicitors & Advocates</p>
+              <p className="text-white mt-6 font-medium">— Themis Solicitors & Advocates PRUC</p>
             </div>
           </div>
         </div>
@@ -964,7 +963,7 @@ export default function ThemisLawFirm() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg mb-2">Email</h4>
-                      <p className="text-slate-600 dark:text-white">info@themispruc.com</p>
+                      <p className="text-slate-600 dark:text-white">council@themispruc.com</p>
                     </div>
                   </div>
                 </div>
@@ -1101,8 +1100,7 @@ export default function ThemisLawFirm() {
               <div>
                 <h4 className="font-semibold text-white mb-4">Legal Notice</h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  Licensed to practice law in Ghana. Regulated by the Ghana Bar Association. Attorney advertising. Prior
-                  results do not guarantee a similar outcome.
+                  Themis Solicitors & Advocates PRUC is a private unlimited company registered in Ghana with registration number CU000470524 and Tax Identification Number C0064121674. The firm and its lawyers are licensed and regulated by the General Legal Council of Ghana.
                 </p>
               </div>
             </div>
@@ -1110,7 +1108,7 @@ export default function ThemisLawFirm() {
             <div className="border-t border-slate-800 pt-8">
               <div className="flex flex-col md:flex-row justify-between items-center">
                 <p className="text-sm text-slate-500 mb-4 md:mb-0">
-                  © 2024 Themis Solicitors & Advocates. All rights reserved.
+                  © 2024 Themis Solicitors & Advocates PRUC. All rights reserved.
                 </p>
                 <div className="flex space-x-6 text-sm text-slate-500">
                   <button className="hover:text-[#C7A349]-400 transition-colors">Privacy Policy</button>
