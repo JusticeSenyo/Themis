@@ -963,7 +963,7 @@ export default function ThemisLawFirm() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg mb-2 text-slate-600 dark:text-white">Email</h4>
-                      <p className="text-slate-600 dark:text-white">council@themispruc.com</p>
+                      <p className="text-slate-600 dark:text-white">counsel@theispric.com</p>
                     </div>
                   </div>
                 </div>
